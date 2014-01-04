@@ -2,19 +2,19 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="/dist/js/bootstrap.js"></script>
+<script src="{{ site.baseurl }}dist/js/bootstrap.js"></script>
 
-<script src="/docs-assets/js/holder.js"></script>
+<script src="{{ site.baseurl }}docs-assets/js/holder.js"></script>
 
-<script src="/docs-assets/js/application.js"></script>
+<script src="{{ site.baseurl }}docs-assets/js/application.js"></script>
 
 {% if page.slug == "customize" %}
-<script src="/docs-assets/js/less.js"></script>
-<script src="/docs-assets/js/jszip.js"></script>
-<script src="/docs-assets/js/uglify.js"></script>
-<script src="/docs-assets/js/filesaver.js"></script>
-<script src="/docs-assets/js/raw-files.js"></script>
-<script src="/docs-assets/js/customizer.js"></script>
+<script src="{{ site.baseurl }}docs-assets-assets/js/less.js"></script>
+<script src="{{ site.baseurl }}docs-assets-assets/js/jszip.js"></script>
+<script src="{{ site.baseurl }}docs-assets-assets/js/uglify.js"></script>
+<script src="{{ site.baseurl }}docs-assets-assets/js/filesaver.js"></script>
+<script src="{{ site.baseurl }}docs-assets-assets/js/raw-files.js"></script>
+<script src="{{ site.baseurl }}docs-assets-assets/js/customizer.js"></script>
 {% endif %}
 
 {% comment %}
@@ -46,3 +46,41 @@
     s.parentNode.insertBefore(t, s);
   })();
 </script>
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: { 
+      equationNumbers: { autoNumber: "AMS" },
+       extensions: ["autobold.js"]
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+

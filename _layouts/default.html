@@ -5,25 +5,12 @@
     {% include header.html %}
   </head>
   <body>
-    <a class="sr-only" href="#content">Skip to main content</a>
-
     <!-- Docs master nav -->
     {% include nav-main.html %}
 
-    <!-- Docs page layout -->
-    <div class="bs-header" id="content">
-      <div class="container">
-        <h1>{{ page.title }}</h1>
-        <p>{{ page.lead }}</p>
-      </div>
-    </div>
-
-        <div class="col-md-9" role="main">
-          {{ content }}
-        </div>
-      </div>
-
-    </div>
+	<div class="container" role="main">
+	  {{ content }}
+	</div>
 
     <!-- JavaScript and analytics stuffs are included in the footer.html -->
     {% include footer.html %}
