@@ -5,6 +5,13 @@
 /*****************************************************************************/
 
 math, .MathJax {
-    color: red;
+    color: black;
 }
 
+.mi {
+	color: black;
+}
+
+.mn {
+	color: black;
+}
