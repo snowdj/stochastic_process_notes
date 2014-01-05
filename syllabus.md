@@ -2,7 +2,6 @@
 layout: default
 title: Syllabus
 slug: syllabus
-base_url: 
 ---
 
 Syllabus

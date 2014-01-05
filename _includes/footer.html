@@ -2,20 +2,9 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="{{ site.baseurl }}dist/js/bootstrap.js"></script>
-
-<script src="{{ site.baseurl }}docs-assets/js/holder.js"></script>
-
-<script src="{{ site.baseurl }}docs-assets/js/application.js"></script>
-
-{% if page.slug == "customize" %}
-<script src="{{ site.baseurl }}docs-assets-assets/js/less.js"></script>
-<script src="{{ site.baseurl }}docs-assets-assets/js/jszip.js"></script>
-<script src="{{ site.baseurl }}docs-assets-assets/js/uglify.js"></script>
-<script src="{{ site.baseurl }}docs-assets-assets/js/filesaver.js"></script>
-<script src="{{ site.baseurl }}docs-assets-assets/js/raw-files.js"></script>
-<script src="{{ site.baseurl }}docs-assets-assets/js/customizer.js"></script>
-{% endif %}
+<script src="{{site.url}}{{ site.baseurl }}dist/js/bootstrap.js"></script>
+<script src="{{site.url}}{{ site.baseurl }}docs-assets/js/holder.js"></script>
+<script src="{{site.url}}{{ site.baseurl }}docs-assets/js/application.js"></script>
 
 {% comment %}
   Inject Twitter widgets asynchronously. Snippet snipped from Twitter's
