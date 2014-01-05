@@ -1,16 +1,17 @@
 ---
 layout: default
-title: STAT 547Q
-lead: Modelling with Stochastic Processes
 ---
 
-<div id="home">
+<div class="container">
+  {{ content }}
+</div>
+
+<div class="container">
   <h1>Announcements</h1>
   <ul class="posts">
     {% for post in site.posts %}
-      {% if post.category == 'Announcement' %}
       	<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></li>
-      {% endif %}
     {% endfor %}
   </ul>
 </div>
+
