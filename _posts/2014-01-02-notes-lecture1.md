@@ -213,4 +213,4 @@ Refer to the website. Some points emphasized in class:
 - Languages used in the exercises: Java, Bugs, R.
  - R is great to use existing statistical methodologies, but not to develop new ones.
  - We will organize remedial tutorials for Java/Bugs as we go along. Please try to drop by if you are not familiar with the covered topic.
-- Environments supported: Mac OS X, linux.
+- Environments supported: Stat net, Mac OS X, linux.

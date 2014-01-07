@@ -21,6 +21,6 @@ Course Information
 **Email:** seong.jun AT stat.ubc.ca
 </address>
 
-**Lab:** Wed 4:00-5:00 PM, location TBD
+**Lab:** Wed 4:00-5:00 PM, ESB 1046
 
 **Piazza:** For questions and discussions, enroll [here](https://piazza.com/ubc.ca/winterterm22013/stat547q/home)
