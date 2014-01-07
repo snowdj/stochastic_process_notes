@@ -11,4 +11,5 @@ Syllabus: Statistical Modeling with Stochastic Processes.
 	
 **Prerequisite:** STAT 460 / 560 or MATH 419 or CS 540 or equivalent (if you are not sure, come talk to me after one or two lectures).
 
+**Note: website is in construction**
 
