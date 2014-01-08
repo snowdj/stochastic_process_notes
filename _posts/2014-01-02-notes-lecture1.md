@@ -121,16 +121,3 @@ To do forward simulation of a CTMC, do the following:
 \\end{eqnarray}
 - Therefore, we can sample from the conditional distribution, $Y\_{0.2} | (Y\_{0.1}, Y\_{0.3})$, which is also Normal&mdash;see Rasmussen's book on Gaussian processes, available online [here](http://www.gaussianprocess.org/gpml/chapters/RWA.pdf).
 
-
-
-### Logistics
-
-Refer to the website. Some points emphasized in class:
-
-- Warning: the material covered in this course is fairly advanced. Stay on top! But you can get *lots* of help at the labs/office hours. 
-- Attendance at labs optional, but strongly recommended.
-- Discussion forum: To encourage richer open exchanges, Seong and I will *only* use this platform to answer course-related questions (unless for personal matters). See ``Contact`` link in the top menu.
-- Languages used in the exercises: Java, Bugs, R.
- - R is great to use existing statistical methodologies, but not to develop new ones.
- - We will organize remedial tutorials for Java/Bugs as we go along. Please try to drop by if you are not familiar with the covered topic.
-- Environments supported: Stat net, Mac OS X, linux.

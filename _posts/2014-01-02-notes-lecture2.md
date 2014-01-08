@@ -90,15 +90,3 @@ To do forward simulation of a DP, do the following:
    
 This is not quite an algorithm (it never terminates), but you will see in the first exercise how to transform it into a valide algorithm.
 
-
-### Logistics
-
-Refer to the website. Some points emphasized in class:
-
-- Warning: the material covered in this course is fairly advanced. Stay on top! But you can get *lots* of help at the labs/office hours. 
-- Attendance at labs optional, but strongly recommended.
-- Discussion forum: To encourage richer open exchanges, Seong and I will *only* use this platform to answer course-related questions (unless for personal matters). See ``Contact`` link in the top menu.
-- Languages used in the exercises: Java, Bugs, R.
- - R is great to use existing statistical methodologies, but not to develop new ones.
- - We will organize remedial tutorials for Java/Bugs as we go along. Please try to drop by if you are not familiar with the covered topic.
-- Environments supported: Stat net, Mac OS X, linux.
