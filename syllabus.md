@@ -23,8 +23,20 @@ Syllabus: Statistical Modeling with Stochastic Processes.
 
 **Evaluation** 
 
-- Weekly exercises (they will involve coding) 50%
-- Final research project (teams encouraged) 50%
+- Weekly exercises (they will involve coding) 45%
+- Final research project (teams encouraged) 45%
+- Participation:
+   - in class and/or labs and/or piazza and/or office hours, reporting typos in notes, 
+   - scribing/editing activity.
+   
+**Editing duties:** Everyone should claim editorship of one lecture. There should be one or two editors per lecture. The editor(s) are responsible for:
+
+- Adding some supplementary references, notes, observations, etc.
+- Correcting errors and typos.
+- Participating in piazza discussion related to the lecture.
+- Adding the diagrams and figures that are not already included.
+
+This will be coordinated via github. Please create an account if you do not have one already.
 
 **Textbook:** There are no textbook. Resources and pointers will be posted in the online lecture notes.
 
