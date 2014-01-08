@@ -55,8 +55,8 @@ p(\pi\_1, \pi\_2) \propto \pi\_1^{\alpha\_1 - 1} \pi\_2^{\alpha\_2 - 1},
 where $\alpha\_1 > 0, \alpha\_2 > 0$ are fixed numbers (called hyper-parameters). The $-1$'s give us a simpler restrictions on the hyper-parameters required to ensure finite normalization of the above expression). 
 - The hyper-parameters are sometimes denoted $\alpha = \alpha\_1$ and $\beta = \alpha\_2$. 
   - To encourage values of $\pi$ close to $1/2$, pick $\alpha = \beta = 2$. 
-  - To encourage this even more strongly, pick $\alpha = \beta = 20$. 
-  - To encourage a ratio $r$ different that $1/2$, make $\alpha$ and $\beta$ grow at different rates, with $\alpha/(\alpha+\beta) = r$. But in order to be able to build a bridge between Dirichlet distribution and Dirichlet processes, we will ask that $\alpha = \beta$ <sub>(comment that should be ignored in first reading: one way to obtain the DP from the Dirichlet, which we will not cover in this lecture,  is as a weak limit of symmetric Dirichlet distributions, i.e. a generalization of the statement $\alpha = \beta$. It may be interesting to ask what happens in the non-symmetric case. This may seem non-exchangeable a priori, but is this addressed when the atoms are sampled iid.).</sub>
+  - To encourage this even more strongly, pick $\alpha = \beta = 20$. (and vice versa, one can take value close to zero to encourage realizations with one point mass larger than the other.)
+  - To encourage a ratio $r$ different that $1/2$, make $\alpha$ and $\beta$ grow at different rates, with $\alpha/(\alpha+\beta) = r$. But in order to be able to build a bridge between Dirichlet distribution and Dirichlet processes, we will ask that $\alpha = \beta$ <sub>(comment that should be ignored in first reading: one way to obtain the DP from the Dirichlet, which we will not cover in this lecture, see wiki [page](http://en.wikipedia.org/wiki/Dirichlet_process),  is as a weak limit of *symmetric* Dirichlet distributions, i.e. a generalization of the statement $\alpha = \beta$. It may be interesting to ask what happens in the non-symmetric case. This may seem non-exchangeable a priori, but is this addressed when the atoms are sampled iid.).</sub>
 
 **Dirichlet distribution:** This generalizes to more than two mixture components easily. If there are $K$ components, the density of the Dirichlet distribution is proportional to:
 \\begin{eqnarray}
@@ -121,6 +121,7 @@ G & \sim & \DP \\\\
 **Preliminary observation:** If I sample twice from an atomic distribution, there is positive probability that I get two identical copies of the same point (an atomic measure $\mu$ is one that assign a positive mass to a point, i.e. there is a $x$ such that $\mu(\{x\}) > 0$). This phenomenon does not occur with non-atomic distribution (with probability one).
 
 The realizations from the random variables $\underline{\theta\_i}$ live in the same space $\Omega$ as those from $\theta\_i$, but $\underline{\theta}$ and $\theta$ have important differences:
+
 - The list $\underline{\theta\_1}, \underline{\theta\_2}, \dots$ will have duplicates with probability one (why?), while $\theta\_1, \theta\_2, \dots$ generally does not have duplicates (as long as $G\_0$ is non-atomic, **which we will assume today**). 
 - Each value taken by a $\underline{\theta\_i}$ correspond to a value taken by a $\theta$, but not vice-versa. 
 

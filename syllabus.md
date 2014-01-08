@@ -25,7 +25,7 @@ Syllabus: Statistical Modeling with Stochastic Processes.
 
 - Weekly exercises (they will involve coding) 45%
 - Final research project (teams encouraged) 45%
-- Participation:
+- Participation: 10%
    - in class and/or labs and/or piazza and/or office hours, reporting typos in notes, 
    - scribing/editing activity.
    
