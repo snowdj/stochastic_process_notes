@@ -31,12 +31,19 @@ Syllabus: Statistical Modeling with Stochastic Processes.
    
 **Editing duties:** Everyone should claim editorship of one lecture. There should be one or two editors per lecture. The editor(s) are responsible for:
 
-- Adding some supplementary references, notes, observations, etc.
-- Correcting errors and typos.
-- Participating in piazza discussion related to the lecture.
-- Adding the diagrams and figures that are not already included.
+1. Adding some supplementary references, notes, observations, etc.
+2. Correcting errors and typos.
+3. Participating in piazza discussion related to the lecture.
+4. Adding the diagrams and figures that are not already included.
 
-This will be coordinated via github. Please create an account if you do not have one already.
+The editors should complete these tasks within 1 week of the lecture. This will be coordinated via github. Please create an account if you do not have one already. See below for details.
+
+**The editing process:** 
+
+- On the week that you will be scribing, on the day of the lecture (or before) send in a email to Seong your github account, he will give you access to the website github, available at this [address](https://github.com/alexandrebouchard/stochastic-process-course). 
+- The files corresponding to the lecture notes are available in ``_posts/``. If you have not used git before, you can edit the file directly from the github website (click on a file, and then on the ``Edit`` button), but we also encourage you to learn using git, either with a graphical interface (SourceTree or Github's), or via command line (many available via google, for example [there](http://rogerdudler.github.io/git-guide/)). 
+- Please try as much as possible to edit only the file corresponding your lecture to avoid too many merge conflicts. 
+- Note also that some changes might be pushed automatically to the website, so make sure to push commit to server only if you are sure the change is good (especially relevant if you are using the git server directly, and this is why we strongly recommend to use your own local git and then push from it).
 
 **Textbook:** There are no textbook. Resources and pointers will be posted in the online lecture notes.
 
