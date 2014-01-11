@@ -48,3 +48,5 @@ The editors should complete these tasks within 1 week of the lecture. This will 
 **Textbook:** There are no textbook. Resources and pointers will be posted in the online lecture notes.
 
 **Office hours:** We will reserve time at the lab for Q&A. More office hours will be added as needed.
+
+**Acknowledgement:** computing supported by an AWS in Education Grant award.
