@@ -1,15 +1,15 @@
 "<b>Meeting</b>","<b>Notes</b>","<b>Topics</b>","<b>Homework (out)</b>","<b>Homework (due)</b>"
 "Jan 6",,"Overview, motivation. Forward simulation: brownian motion, CTMCs","Exercise 1",
-"Jan 8",,"Forward simulation continued.",,
+"Jan 8",,"Forward simulation continued. Motivations for Bayesian nonparametrics.",,
 "Jan 13",,"Background: parametric Bayesian statistics",,
-"Jan 15",,,,"Exercise 1"
-"Jan 20",,,,
-"Jan 22",,,,
-"Jan 27",,,,
-"Jan 29",,,,
-"Feb 03",,,,
-"Feb 05",,,,
-"Feb 10",,,,
-"Feb 12",,,,
-"Feb 17",Reading Break,,,
-"Feb 19",Reading Break,,,
+"Jan 15",,"Dirichlet process: properties and extensions","Exercise 2","Exercise 1"
+"Jan 20",,"Inference 1",,
+"Jan 22",,"Topics in Bayesian non-parametrics 1","Exercise 3","Exercise 2"
+"Jan 27",,"Inference 2",,
+"Jan 29",,"Topics in Bayesian non-parametrics 2","Exercise 4","Exercise 3"
+"Feb 03",,"Jump processes",,
+"Feb 05",,"Processes on combinatorial objects","Exercise 5","Exercise 4"
+"Feb 10",,"Diffusions",,
+"Feb 12",,"Additional topics. Large scale stochastic process inference?",,"Exercise 5"
+"Feb 17","Reading Break",,,
+"Feb 19","Reading Break",,,

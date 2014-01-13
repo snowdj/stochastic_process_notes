@@ -66,7 +66,7 @@ Note that the normalization of the Dirichlet distribution is analytically tracta
 
 **Important points:** 
 
-- Each component $k\in \{1, \dots, K\}$ is associated with a probability $\pi\_k$, and a value $\theta\_k$. 
+- Each component $k\in \\{1, \dots, K\\}$ is associated with a probability $\pi\_k$, and a value $\theta\_k$. 
 - This is therefore a discrete measure with atoms at $(\theta\_1, \dots, \theta\_K)$ and probabilities given by the components of the vector $\pi = (\pi\_1, \dots, \pi\_k)$.
 
 **Formally:**
@@ -118,7 +118,7 @@ G & \sim & \DP \\\\
 \underline{\theta\_i} | G & \sim & G
 \\end{eqnarray}
 
-**Preliminary observation:** If I sample twice from an atomic distribution, there is positive probability that I get two identical copies of the same point (an atomic measure $\mu$ is one that assign a positive mass to a point, i.e. there is a $x$ such that $\mu(\{x\}) > 0$). This phenomenon does not occur with non-atomic distribution (with probability one).
+**Preliminary observation:** If I sample twice from an atomic distribution, there is positive probability that I get two identical copies of the same point (an atomic measure $\mu$ is one that assign a positive mass to a point, i.e. there is a $x$ such that $\mu(\\{x\\}) > 0$). This phenomenon does not occur with non-atomic distribution (with probability one).
 
 The realizations from the random variables $\underline{\theta\_i}$ live in the same space $\Omega$ as those from $\theta\_i$, but $\underline{\theta}$ and $\theta$ have important differences:
 
@@ -169,28 +169,13 @@ By a slight abuse of notation, we will also call and denote the distribution on 
 (\underline{\theta\_1}, \dots, \underline{\theta\_n}) \deq (\underline{\theta\_{\sigma(1)}}, \dots, \underline{\theta\_{\sigma(n)}})
 \\end{eqnarray}
 
-You will prove this property in the first exercise. In the meanwhile, you can convince yourself with the following small example, where we compute a joint probability of observing the partition $\{\{1,2,3\},\{4,5\}\}$ with two different orders. First, with the order $1 \to 2 \to 3 \to 4 \to 5$, and $\alpha\_0 = 1$:
+You will prove this property in the first exercise. In the meanwhile, you can convince yourself with the following small example, where we compute a joint probability of observing the partition $\\{\\{1,2,3\\},\\{4,5\\}\\}$ with two different orders. First, with the order $1 \to 2 \to 3 \to 4 \to 5$, and $\alpha\_0 = 1$:
 
 <img src="{{ site.url }}/images/CRP-order0.jpg" alt="Drawing" style="width: 450px"/>
 
 Then, with the order $4 \to 5 \to 3 \to 2 \to 1$, we get:
 
 <img src="{{ site.url }}/images/CRP-order1.jpg" alt="Drawing" style="width: 450px"/>
-
-#### FDDs of a DP
-
-Consider the following thought experiment:
-
-1. Let us fix a partition of $\Omega$, $A\_1, A\_2, A\_3$. <img src="{{ site.url }}/images/partition.jpg" alt="Drawing" style="width: 100px; float: right"/> 
-2. Imagine that we simulate a realization of $G$. 
-3. Let us look at $G(A\_1)$. What is that? Just the sum of the heights of the sticks that fall in $A\_1$. 
-4. Do the same for $A\_2, A\_3$. We get a triplet of positive real numbers $(A\_1, A\_2, A\_3)$.
-5. Now let's repeat the steps 2-4. We get a list of triplets. Let's ask the following question: what is the multivariate distribution of these triplets? 
-
-**Equivalent definition of a Dirichlet Process:** We say that $G : \sa\_{\Omega'} \to (\sa\_{\Omega} \to [0, 1])$ is distributed according to the Dirichlet process distribution, denoted $G \sim \DP(\alpha\_0, G\_0)$, if for all measurable partitions of $\Omega$, $(A\_1, \dots, A\_m)$, the FDDs are Dirichlet distributed:
-\\begin{eqnarray}
-(G(A\_1), \dots, G(A\_m)) \sim \Dir(\alpha\_0 G\_0(A\_1), \dots, \alpha\_0 G\_0(A\_m)).
-\\end{eqnarray}
 
 
 
