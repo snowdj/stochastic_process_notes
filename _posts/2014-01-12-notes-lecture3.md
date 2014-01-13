@@ -46,9 +46,52 @@ Note that other criteria certainly exist for selecting estimators, in particular
 
 Of course, these nice properties assume that the model is a true representation of the world (a **well-specified model**), a condition that is almost always false. This provides a motivation for creating richer models that are more faithful to reality. In particular, models of adaptive complexity, that become progressively complex as more data becomes available. These models are called **non-parametric** (more formal definition below). As alluded last lecture, stochastic processes provide a formidable tool for constructing these non-parametric models.
 
+#### Well-specified Bayesian models exist, but can force us to be non-parametric
+
+Let us make the discussion on de Finetti from last week more formal.
+
+**Recall:** A finite sequence of random variables $(X\_1, \dots, X\_n)$ is exchangeable if for any permutation $\sigma : \\{1, \dots, n\\} \to \\{1, \dots, n\\}$, we have:
+
+\\begin{eqnarray}
+({X\_1}, \dots, {X\_n}) \deq ({X\_{\sigma(1)}}, \dots, {X\_{\sigma(n)}}).
+\\end{eqnarray}
+
+**Extension:** A countably infinite sequence of random variable $(X\_1, X\_2, \dots)$ is **(infinitely) exchangeable** if all finite sub-sequence $(X\_{k\_1}, \dots, X\_{k\_n})$ are exchangeable.
+
+---
+
+**Example:**  <img src="{{ site.url }}/images/polya-urn.jpg" alt="Drawing" style="width: 200px; float: right"/>
+
+In the first exercise, you will show that any finite or infinite list of tokens sampled from a CRP is exchangeable. Here is a consequence: pick $G\_0$ to be a discrete measure on two colors (red and blue): red with probability $2/3$, and blue with probability $1/3$ (we assumed last time that $G\_0$ was non-atomic, but the theory extends easily to atomic $G\_0$, the only difference is that two different tables can pick the same dish type). Interpretation as an urn model? 
+
+This means that the probability of observing the sequence of colors
+
+<font color="red">red</font>, <font color="red">red</font>, <font color="red">red</font>, <font color="red">red</font>, <font color="red">red</font>, <font color="red">red</font>, <font color="blue">blue</font>, <font color="blue">blue</font>
+
+is the same as the probability of observing the sequence
+
+<font color="blue">blue</font>, <font color="blue">blue</font>, <font color="red">red</font> , <font color="red">red</font> , <font color="red">red</font> , <font color="red">red</font>, <font color="red">red</font>, <font color="red">red</font>
+
+---
+
+**Theorem:** De Finetti ([simple version](http://www.math.kth.se/matstat/gru/Statistical%20inference/definetti.pdf)): If $(X\_1, X\_2, \dots)$ is an exchangeable sequence of **binary** random variables, $X\_i : \Omega' \to \{0,1\}$ then there exists a random variable $Z : \Omega' \to [0, 1]$ such that $X\_i | Z \sim \Bern(Z)$.
+
+In other words, if all we are modelling is a sequence of exchangeable binary random variables, we do not need a non-parametric model. On the other hand, if the $X\_i$ are real, the situation is different:
+
+**Theorem:** De Finetti (more general version, see [Kallenberg, 2005](http://www.springer.com/statistics/statistical+theory+and+methods/book/978-0-387-25115-8), Chapter 1.1): If $(X\_1, X\_2, \dots)$ is an exchangeable sequence of real-valued random variables, the there exists a random measure $G : \Omega' \to (\sa\_{\Omega} \to [0,1])$ such that $X\_i | G \sim G$.
+
+Note that this random measure $G$ is not necessarily Dirichlet-Process distributed. Here is a counter-example, the **Pitman-Yor process**, which has the same structure as the CRP, with the following amendments: 
+
+- We boost the probability of creating a new table by $T\_n \cdot d$, where:
+   - $T\_n$ is the current number of occupied tables (before seating a new customer)
+   - $d$ is a hyper-parameter called a **discount** such that $0 \le d < 1$ (note that we also gain some extra freedom on $\alpha\_0$, now it can be "slightly negative", namely $\alpha\_0 > -d$).
+- For each currently occupied table, we reduce the probability of joining that table by the constant $d$.
+
+Optional exercise: this is still exchangeable, yet for $d \neq 0$, this is not the marginal of a Dirichlet process (in other words, this does not have the distribution of a sample of a sampled Dirichlet process).
+
 #### Bayesian estimation in parametric families
 
-Many non-parametric models are built by composing a random number of parametric models, so it is worth spending some time on parametric models initially. This will help clarify the formal definition of parametric vs. non-parametric at the same time.
+Many non-parametric models are built by composing a random number of parametric models (DP by themselves would be limited since it would predict duplicates in the observations, which we may not want). Therefore, it is worth spending some time on parametric models initially. This will help clarify the formal definition of parametric vs. non-parametric at the same time.
 
 Formally, a parametric Bayesian model contains two ingredients:
 
@@ -167,11 +210,37 @@ The cost of taking the hierarchical Bayes route is that it generally requires re
 
 ### Composing many parametric models into a larger, non-parametric model
 
-**In construction:** will be based on these [notes](http://www.stat.ubc.ca/~bouchard/courses/stat547-sp2011/notes-part3.pdf) from the previous time I taught the course.
+Based on these [notes](http://www.stat.ubc.ca/~bouchard/courses/stat547-sp2011/notes-part3.pdf) from the previous time I taught the course.
 
-<!--We can now integrate these new concepts to make our picture of the Dirichlet process mixture model more precise.
+We can now integrate these new concepts to make our picture of Bayesian non-parametric mixture models more precise. Let us start with a model based on the stick breaking representation. Later, we will connect it to the CRP representation.
 
-For tractability reasons -->
+We pick:
+
+- A likelihood model with densit $\ell(x|\theta)$ over each individual observation (a weight). For example, a normal distribution (a bit broken since weights are positive, but should suffice for the purpose of exposition).
+- A base measure that is conjugate to $G\_0$, with density $p(\theta)$. As before, $\theta$ is a pair containing a real number (modelling a sub-population mean) and a positive real number (modelling a sub-population variance (or equivalently, precision, the inverse of the variance)). For example, a normal-inverse-gamma distribution.
+- Some hyper-parameters for this parametric prior, as well as an hyper-parameter $\alpha\_0$ for the Dirichlet prior.
+
+To simulate a dataset, use the following steps:
+
+1. Break a stick $\pi$ according to the algorithm covered last time.
+2. Simulate an infinite sequence $(\theta\_1, \theta\_2, \dots)$ of iid normal-inverse-gamma random variables. The first one corresponds to the first stick segment, the second, to the second segment, etc.
+3. For each datapoint $i$:
+     1. Throw a dart on the stick. Look at the random stick index $Z\_i$. Grab the parameter $\theta\_{Z\_i}$ corresponding to it.
+     2. Simulate a new datapoint $X\_i$ according to $\ell(\cdot | \theta\_{Z\_i})$.
+     
+While forward simulation is easy, exact posterior simulation is computationally hard, as we will see later in this course. We will therefore need approximate posterior simulation. The good news is that we need to show that we can do only one additional operation: computing the density of a realization of $\pi, Z, X$. 
+
+Computing the density of a realization can be easy or hard, depending on the situation. It is hard when there is a complicated set of outcomes that lead to the same realization. Fortunately, this is not the case here. 
+
+Another complication factor is that the space is infinite-dimensional, and taking an infinite product of densities is ill-behaved. We will see two elegant ways of resolving this next week. For now, let us just **truncated** the DP: for some fixed $K$, set $\beta\_K = 1$. This gives probability zero to the subsequent components. We can then express the joint distribution of $\pi, Z, X$ via the density:
+
+\\begin{eqnarray}
+p(\pi, z, x) = \left(\prod\_{k=1}^K \Beta(\beta\_k(\pi); 1, \alpha\_0) p(\theta\_k) \right) \left( \prod\_{i=1}^N \Mult(z\_i; \pi) \ell(x\_i | \theta\_{z\_i}) \right).
+\\end{eqnarray}
+
+This would, in principle, be the only problem specific calculation that would be needed to run a basic MCMC sampler for posterior simulation of a truncated DP.
+
+<!-- evaluating likelihood at a point -->
 
 #### FDDs of a DP
 
@@ -183,7 +252,7 @@ Consider the following thought experiment:
 4. Do the same for $A\_2, A\_3$. We get a triplet of positive real numbers $(A\_1, A\_2, A\_3)$.
 5. Now let's repeat the steps 2-4. We get a list of triplets. Let's ask the following question: what is the multivariate distribution of these triplets? 
 
-**Equivalent definition of a Dirichlet Process:** We say that $G : \sa\_{\Omega'} \to (\sa\_{\Omega} \to [0, 1])$ is distributed according to the Dirichlet process distribution, denoted $G \sim \DP(\alpha\_0, G\_0)$, if for all measurable partitions of $\Omega$, $(A\_1, \dots, A\_m)$, the FDDs are Dirichlet distributed:
+**Equivalent definition of a Dirichlet Process:** We say that $G : \Omega' \to (\sa\_{\Omega} \to [0, 1])$ is distributed according to the Dirichlet process distribution, denoted $G \sim \DP(\alpha\_0, G\_0)$, if for all measurable partitions of $\Omega$, $(A\_1, \dots, A\_m)$, the FDDs are Dirichlet distributed:
 \\begin{eqnarray}
 (G(A\_1), \dots, G(A\_m)) \sim \Dir(\alpha\_0 G\_0(A\_1), \dots, \alpha\_0 G\_0(A\_m)).
 \\end{eqnarray}
