@@ -236,7 +236,7 @@ We can now integrate these new concepts to make our picture of Bayesian non-para
 
 We pick:
 
-- A likelihood model with densit $\ell(x|\theta)$ over each individual observation (a weight). For example, a normal distribution (a bit broken since weights are positive, but should suffice for the purpose of exposition).
+- A likelihood model with density $\ell(x|\theta)$ over each individual observation (a weight). For example, a normal distribution (a bit broken since weights are positive, but should suffice for the purpose of exposition).
 - A base measure that is conjugate to $G\_0$, with density $p(\theta)$. As before, $\theta$ is a pair containing a real number (modelling a sub-population mean) and a positive real number (modelling a sub-population variance (or equivalently, precision, the inverse of the variance)). For example, a normal-inverse-gamma distribution.
 - Some hyper-parameters for this parametric prior, as well as an hyper-parameter $\alpha\_0$ for the Dirichlet prior.
 
@@ -255,7 +255,7 @@ Computing the density of a realization can be easy or hard, depending on the sit
 Another complication factor is that the space is infinite-dimensional, and taking an infinite product of densities is ill-behaved. We will see two elegant ways of resolving this next week. For now, let us just **truncated** the DP: for some fixed $K$, set $\beta\_K = 1$. This gives probability zero to the subsequent components. We can then express the joint distribution of $\pi, Z, X$ via the density:
 
 \\begin{eqnarray}\label{eq:joint}
-p(\pi, z, x) = \left(\prod\_{k=1}^K \Beta(\beta\_k(\pi); 1, \alpha\_0) p(\theta\_k) \right) \left( \prod\_{i=1}^N \Mult(z\_i; \pi) \ell(x\_i | \theta\_{z\_i}) \right).
+p(\pi, \theta, z, x) = \left(\prod\_{k=1}^K \Beta(\beta\_k(\pi); 1, \alpha\_0) p(\theta\_k) \right) \left( \prod\_{i=1}^N \Mult(z\_i; \pi) \ell(x\_i | \theta\_{z\_i}) \right).
 \\end{eqnarray}
 
 Here $\beta\_k(\pi)$ is a deterministic function that return the $k-th$ beta random variable used in the stick breaking process given a broken stick $\pi$ (convince yourself that these beta variables can be recovered deterministically from $\pi$).
@@ -269,14 +269,14 @@ We will show this is possible to marginalize both $\pi$ and $\theta$. Today, we 
 Let us look at an example how this works. Suppose that in a small dataset of size three, the current table assignment $z$ consists in two datapoints at a table, and one alone. Set $K=4$.  Let us group the terms in the second parenthesis of Equation~(\ref{eq:joint}) by $\theta\_k$:
 
 \\begin{eqnarray}
-p(\pi, z, x) & = & \left(\prod\_{k=1}^K \Beta(\beta\_k(\pi); 1, \alpha\_0) \right) \left( \prod\_{i=1}^N \Mult(z\_i; \pi) \right) \\\\
+p(\pi, \theta, z, x) & = & \left(\prod\_{k=1}^K \Beta(\beta\_k(\pi); 1, \alpha\_0) \right) \left( \prod\_{i=1}^N \Mult(z\_i; \pi) \right) \\\\
 & & \times \left( p(\theta\_1) \ell(x\_1 | \theta\_1) \right) \\\\
 & & \times \left( p(\theta\_2) \ell(x\_2 | \theta\_2) \ell(x\_3 | \theta\_2) \right) \\\\
 & & \times \left( p(\theta\_3)  \right) \\\\
 & & \times \left( p(\theta\_4)  \right).
 \\end{eqnarray}
 
-To get the marginal over $(\pi, X)$, we need to integrate over $\theta\_1, \dots, \theta\_4$.
+To get the marginal over $(\pi, Z, X)$, we need to integrate over $\theta\_1, \dots, \theta\_4$.
 
 Note that we get a product of  factors of the form:
 
@@ -284,7 +284,7 @@ Note that we get a product of  factors of the form:
 \int   p(\theta\_2) \ell(x\_2 | \theta\_2) \ell(x\_3 | \theta\_2) \ud \theta\_2.
 \\end{eqnarray}
 
-This is just $m(x\_2, x\_3)$, which we can handle by conjugacy!
+But this is just $m(x\_2, x\_3)$, which we can handle by conjugacy!
 
 <!-- evaluating likelihood at a point -->
 
