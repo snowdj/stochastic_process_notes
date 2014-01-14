@@ -8,7 +8,12 @@ Bayesian non-parametrics being a major area of application of stochastic process
 
 ### Overview of some useful concepts from Bayesian statistics
 
-Consider the following generic statistical problem: we observe $x \in \Xscr$, we have a model of how this observation came to be in terms of some unknown quantities $z \in \Zscr$, and we want to make some decision (for example, reconstructing some of the unknown quantities, or forecasting future observations, etc). More generally, we want to device a decision-making strategy, which we formalize as an **estimator**: a function of the observation $\delta(x)$. 
+Consider the following generic statistical problem: 
+
+- we observe $x \in \Xscr$, we have a model of how this observation came to be in terms of some unknown quantities $z \in \Zscr$, 
+- and we want to make some decision (for example, reconstructing some of the unknown quantities, or forecasting future observations, etc). 
+
+More generally, we want to device a decision-making strategy, which we formalize as an **estimator**: a function of the observation $\delta(x)$. 
 
 We want this estimator to be as "good" as possible. Under a certain criterion of goodness, we will see that the Bayesian framework provides a principled and systematic way of specifying a "best" estimator. 
 
@@ -16,7 +21,9 @@ We want this estimator to be as "good" as possible. Under a certain criterion of
 
 Here is a very frequent **mis-conception** about the Bayesian framework that we will try to correct: "Bayesian methods consist in computing the posterior distribution and returning the point with the highest posterior density (1)." Other variants: "Bayesian methods consist in returning the posterior expectation of the parameters (2)." 
 
-While the posterior distribution is always involved in Bayesian methods, and that this posterior is *sometimes* used as in (1, 2) above, in other cases the Bayesian framework will prescribe other uses of the posterior. How to use the posterior in general under the Bayesian framework is specified by the *Bayes estimator*.
+While the posterior distribution is always involved in Bayesian methods, and that this posterior is *sometimes* used as in (1, 2) above, in other cases the Bayesian framework will prescribe other uses of the posterior. 
+
+How to use the posterior in general under the Bayesian framework is specified by the *Bayes estimator*.
 
 In full generality, approaching a problem in a Bayesian way consists in: 
 
@@ -34,17 +41,25 @@ Solving an optimization problem over a space of estimators seems quite abstract 
 
 This estimator $\delta^\*$ is called a **Bayes estimator.**
 
-This means that given a model and a goal, the Bayesian framework provides in principle a recipe for constructing an estimator. Moreover, if the loss is strictly convex, the Bayes estimator is unique. See Robert 2007. In other words, under strictly convex losses, the Bayesian framework endows the space of estimators with a total order.  However, the computation required to implement this recipe may be considerable. This explains why computational statistics plays a large role in Bayesian statistics and in this course. 
+This means that given a model and a goal, the Bayesian framework provides in principle a recipe for constructing an estimator. 
+
+Moreover, if the loss is strictly convex, the Bayes estimator is unique. See Robert 2007. In other words, under strictly convex losses, the Bayesian framework endows the space of estimators with a total order.  
+
+However, the computation required to implement this recipe may be considerable. This explains why computational statistics plays a large role in Bayesian statistics and in this course. 
 
 ---
 
-**Optional exercise:** If you have not seen this material before, show that in the special case where $L$ is the squared loss, one can compute a simple expression for the minimizer, which is simply $\delta^*(X) = \E[Z|X]$. For other losses finding such an expression may or may not be possible. We will talk about approximation strategies for the latter case later in this course. 
+**Optional exercise:** If you have not seen this material before, show that in the special case where $L$ is the squared loss, one can compute a simple expression for the minimizer, which is simply $\delta^*(X) = \E[Z|X]$. 
+
+For other losses finding such an expression may or may not be possible. We will talk about approximation strategies for the latter case later in this course. 
 
 ---
 
 Note that other criteria certainly exist for selecting estimators, in particular frequentist criteria. Some of these criteria, such as admissibility, do not create a total order on estimator (even under strictly convex losses), they only provide a partial order. Moreover, since the Bayes estimator can be shown to be non-suboptimal under this criterion as well (in other words, admissible)
 
-Of course, these nice properties assume that the model is a true representation of the world (a **well-specified model**), a condition that is almost always false. This provides a motivation for creating richer models that are more faithful to reality. In particular, models of adaptive complexity, that become progressively complex as more data becomes available. These models are called **non-parametric** (more formal definition below). As alluded last lecture, stochastic processes provide a formidable tool for constructing these non-parametric models.
+Of course, these nice properties assume that the model is a true representation of the world (a **well-specified model**), a condition that is almost always false. 
+
+This provides a motivation for creating richer models that are more faithful to reality. In particular, models of adaptive complexity, that become progressively complex as more data becomes available. These models are called **non-parametric** (more formal definition below). As alluded last lecture, stochastic processes provide a formidable tool for constructing these non-parametric models.
 
 #### Well-specified Bayesian models exist, but can force us to be non-parametric
 
@@ -62,7 +77,12 @@ Let us make the discussion on de Finetti from last week more formal.
 
 **Example:**  <img src="{{ site.url }}/images/polya-urn.jpg" alt="Drawing" style="width: 200px; float: right"/>
 
-In the first exercise, you will show that any finite or infinite list of tokens sampled from a CRP is exchangeable. Here is a consequence: pick $G\_0$ to be a discrete measure on two colors (red and blue): red with probability $2/3$, and blue with probability $1/3$ (we assumed last time that $G\_0$ was non-atomic, but the theory extends easily to atomic $G\_0$, the only difference is that two different tables can pick the same dish type). Interpretation as an urn model? 
+In the first exercise, you will show that any finite or infinite list of tokens sampled from a CRP is exchangeable. Here is a consequence: 
+
+- pick $G\_0$ to be a discrete measure on two colors (red and blue): 
+    - red with probability $2/3$, and 
+    - blue with probability $1/3$ (we assumed last time that $G\_0$ was non-atomic, but the theory extends easily to atomic $G\_0$, the only difference is that two different tables can pick the same dish type). 
+- Interpretation as an urn model? 
 
 This means that the probability of observing the sequence of colors
 
@@ -153,7 +173,7 @@ Finding a collection that satisfies these two conditions is easy. For example, i
 But in order for the conjugate approach to be computationally feasible, we should also ensure that:
 
 - Each member $p\_h$ of the family should be tractable, in particular we should have an efficient algorithm for computing the normalization constant of arbitrary members.
-- We should also have an efficient algorithm for finding updated parameters $h'$, as a function of the observed data $x$ and prior hyper-parameters $h_0$, $h' = u(x, h\_0)$.
+- We should also have an efficient algorithm for finding updated parameters $h'$, as a function of the observed data $x$ and prior hyper-parameters $h\_0$, $h' = u(x, h\_0)$.
 
 ---
 
@@ -234,13 +254,41 @@ Computing the density of a realization can be easy or hard, depending on the sit
 
 Another complication factor is that the space is infinite-dimensional, and taking an infinite product of densities is ill-behaved. We will see two elegant ways of resolving this next week. For now, let us just **truncated** the DP: for some fixed $K$, set $\beta\_K = 1$. This gives probability zero to the subsequent components. We can then express the joint distribution of $\pi, Z, X$ via the density:
 
-\\begin{eqnarray}
+\\begin{eqnarray}\label{eq:joint}
 p(\pi, z, x) = \left(\prod\_{k=1}^K \Beta(\beta\_k(\pi); 1, \alpha\_0) p(\theta\_k) \right) \left( \prod\_{i=1}^N \Mult(z\_i; \pi) \ell(x\_i | \theta\_{z\_i}) \right).
 \\end{eqnarray}
 
-This would, in principle, be the only problem specific calculation that would be needed to run a basic MCMC sampler for posterior simulation of a truncated DP.
+Here $\beta\_k(\pi)$ is a deterministic function that return the $k-th$ beta random variable used in the stick breaking process given a broken stick $\pi$ (convince yourself that these beta variables can be recovered deterministically from $\pi$).
+
+This would, be the main calculation that would be needed to run a basic MCMC sampler for posterior simulation of a truncated DP.
+
+As we will see, it is often useful to marginalize some variables and to define MCMC sampler on the smaller space obtained after marginalization.
+
+We will show this is possible to marginalize both $\pi$ and $\theta$. Today, we consider marginalizing $\theta$ only first.
+
+Let us look at an example how this works. Suppose that in a small dataset of size three, the current table assignment $z$ consists in two datapoints at a table, and one alone. Set $K=4$.  Let us group the terms in the second parenthesis of Equation~(\ref{eq:joint}) by $\theta\_k$:
+
+\\begin{eqnarray}
+p(\pi, z, x) & = & \left(\prod\_{k=1}^K \Beta(\beta\_k(\pi); 1, \alpha\_0) \right) \left( \prod\_{i=1}^N \Mult(z\_i; \pi) \right) \\\\
+& & \times \left( p(\theta\_1) \ell(x\_1 | \theta\_1) \right) \\\\
+& & \times \left( p(\theta\_2) \ell(x\_2 | \theta\_2) \ell(x\_3 | \theta\_2) \right) \\\\
+& & \times \left( p(\theta\_3)  \right) \\\\
+& & \times \left( p(\theta\_4)  \right).
+\\end{eqnarray}
+
+To get the marginal over $(\pi, X)$, we need to integrate over $\theta\_1, \dots, \theta\_4$.
+
+Note that we get a product of  factors of the form:
+
+\\begin{eqnarray}
+\int   p(\theta\_2) \ell(x\_2 | \theta\_2) \ell(x\_3 | \theta\_2) \ud \theta\_2.
+\\end{eqnarray}
+
+This is just $m(x\_2, x\_3)$, which we can handle by conjugacy!
 
 <!-- evaluating likelihood at a point -->
+
+### Theoretical properties of DPs
 
 #### FDDs of a DP
 
