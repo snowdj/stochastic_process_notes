@@ -22,7 +22,7 @@ Based on slides I created the first time I taught this course: [PDF](http://www.
 - $Y_s(\omega) \in \\RR$: value of the random variable with index $s\in S$. The variable $\omega$ denotes an outcome.
 - Example: Brownian motion - Brownian motion is a sample path of a diffusion process models the trajectory of a particle embedded in a flowing fluid and subjected to random displacements due to collisions with molecules, which is called Brownian motion.
 - Alternative view: random function. (**Terminology:** Path space of a stochastic process.)
-- flexible classes of diffusions and jump processes (we should be able to cover a bit of both in this course) 
+- flexible classes of diffusions and jump processes -jump process has discrete movements rather than continuous- (we should be able to cover a bit of both in this course) 
  - Continuous-time Markov chains (a mathematical model which takes values in some finite or countable set and for which the time spent in each state takes non-negative real values and has an exponential distribution), 
  - stochastic PDEs (essentially partial differential equations that have random forcing terms and coefficients). 
 - Applications: 
@@ -123,5 +123,7 @@ To do forward simulation of a CTMC, do the following:
 
 ### Supplementary references and notes
 ***Under construction***
+
 1- http://en.wikipedia.org/wiki/Continuous-time_Markov_chain
+
 2- http://en.wikipedia.org/wiki/Brownian_motion
