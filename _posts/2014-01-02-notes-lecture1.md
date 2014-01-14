@@ -124,4 +124,4 @@ To do forward simulation of a CTMC, do the following:
 ### Supplementary references and notes
 - A stochastic process or random process is a not necessarily a collection of independent random variables.
 - Brownian motion is a sample path of a diffusion process models the trajectory of a particle embedded in a flowing fluid and subjected to random displacements due to collisions with molecules, which is called Brownian motion. <img src="{{ site.url }}/images/brownianmotion.gif" alt="Drawing" style="width: 200px; float: right"/>
-- Countable additivity (or $\sigma$ additivity): For all countable collections $\{E_i\}_{i \in \mathbf{N}}$ of pairwise disjoint sets in $\Sigma$:$\mu\Bigl(\bigcup_{i \in \mathbf{N}} E_i\Bigr) = \sum_{i \in \mathbf{N}} \mu\!\left(E_i\right)$.
+- Countable additivity (or $\sigma$ additivity): For all countable collections $\{ E_i\}_{i \in N}$ of pairwise disjoint sets in $\Sigma$:$\mu\Bigl(\bigcup_{i \in N} E_i\Bigr) = \sum_{i \in N} \mu(E_i)$.
