@@ -46,23 +46,22 @@ Important differences of blocks from the stack (vs. those from the heap):
    - For arrays, we only need to specify the number of things, and the type of these things. For example, create a new array of 10 integers, and assign it to a variable via: ``int[] myArray = new int[5];``
    - For arrays, we need to specify the name and types of the things the block will contain. This specification is called a **class**.
 
-Example of a class that contains a pair of real numbers (it should be in a file called ``Coordinate.java``):
-
-***TODO: make this a stick object instead?***
-
-```java
-class Coordinate {
-	double x;
-	double y;
-}
-```
-You can then create a new block containing a real called x and a real called y via ``Coordinate myCoordinate = new Coordinate();``.
+	Example of a class that contains a pair of real numbers (it should be in a file called ``Coordinate.java``):
+	
+	```java
+	class Coordinate {
+		double x;
+		double y;
+	}
+	```
+	You can then create a new block containing a real called x and a real called y via ``Coordinate myCoordinate = new Coordinate();``.
 
 #### Scope
 
-When calling a function, you have  ***Current pointer***
+When calling a function, information (above) regarding the function is placed in the stack directly above the caller function. 
+Every Java program begins execution from a special function called ``main``. Therefore, it is the first thing placed on the stack.
 
-***TODO: tie to the second thing the stack keeps track of***
+*** TODO: complete this section ***
 
 ***Some more topics:***
 - Differences with R
@@ -71,3 +70,27 @@ When calling a function, you have  ***Current pointer***
 - generics
 - interfaces
 - collection api
+
+### Setting up Java environment
+
+  1. Download [Eclipse](http://www.eclipse.org/downloads/)
+  2. Install [Java](http://java.com/en/download/manual.jsp) on your machine if it is not installed already
+  3. Start Eclipse, create a new **Java Project** via File->New (or keyboard cmd-N or ctrl-N depending on your O/S) -- name the project ``lab2``
+  4. Under the src folder, create a new **Java Class** via File->New. Fill out the form as follows:
+  
+  	 ```
+  	 Package:  noise
+  	 Name:     Main
+  	 Checkbox: public static void main(String[] args)
+  	 ```
+  5. Type the following code inside the ``main`` function:
+  
+	  ``` java
+	  System.out.println("Hello, World!")
+	  ```
+	  
+	  Run the program.
+  6. Download and setup [Gradle](http://www.gradle.org/)
+  
+### For the next lab ###
+
