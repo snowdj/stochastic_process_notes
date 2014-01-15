@@ -9,7 +9,7 @@ category: 'Lecture'
 
 Based on slides I created the first time I taught this course: [PDF](http://www.stat.ubc.ca/~bouchard/courses/stat547-sp2011/lecture1.pdf).
 
-**What is a stochastic process?** A collection of random variables indexed by an arbitrary  set $S$. This gets interesting when $S$ is uncountable. 
+**What is a stochastic process?** Stochastic process or random process is a collection of random (not necessarily independent) variables indexed by an arbitrary set $S$. This gets interesting when $S$ is uncountable. 
 
 **Topic of this course:** Why/when is it useful to have $S$ uncountable? How can we still do inference using our finite brains and computers?
 
@@ -20,11 +20,11 @@ Based on slides I created the first time I taught this course: [PDF](http://www.
 **Time series:** $S = \\RR$. <img src="{{ site.url }}/images/brownian.jpg" alt="Drawing" style="width: 200px; float: right"/>
  
 - $Y_s(\omega) \in \\RR$: value of the random variable with index $s\in S$. The variable $\omega$ denotes an outcome.
-- Example: Brownian motion.
+- Example: Brownian motion - Brownian motion is a sample path of a diffusion process models the trajectory of a particle embedded in a flowing fluid and subjected to random displacements due to collisions with molecules, which is called Brownian motion.
 - Alternative view: random function. (**Terminology:** Path space of a stochastic process.)
-- flexible classes of diffusions and jump processes (we should be able to cover a bit of both in this course) 
- - Continuous-time Markov chains, 
- - stochastic PDEs. 
+- flexible classes of diffusions and jump processes -jump process has discrete movements rather than continuous- (we should be able to cover a bit of both in this course) 
+ - Continuous-time Markov chains (a mathematical model which takes values in some finite or countable set and for which the time spent in each state takes non-negative real values and has an exponential distribution), 
+ - stochastic PDEs (essentially partial differential equations that have random forcing terms and coefficients). 
 - Applications: 
  - economic/financial indicators, 
  - frequency of a population having a certain genetic mutation, 
@@ -32,12 +32,12 @@ Based on slides I created the first time I taught this course: [PDF](http://www.
 
 **Natural generalizations:**
 
-- $S = \\RR^2$: many applications in spatial statistics. <img src="{{ site.url }}/images/gp.jpg" alt="Drawing" style="width: 200px; float: right"/>
+- $S = \\RR^2$: many applications in spatial statistics. $s=(longitude, latitude)$ and $Y_s$= concentration of a chemical at that location. <img src="{{ site.url }}/images/gp.jpg" alt="Drawing" style="width: 200px; float: right"/>
 - $S = $ a space with a nice inner product structure (Hilbert space). Example we will cover: Gaussian processes. 
 
 **Less natural but very useful:** random measures: $S = \\sa$, a sigma-algebra.
 
-- Recall: a measure is a function that takes a set and returns a non-negative number, subject to countable additivity of disjoint sets constraints.
+- Recall: a measure is a function that takes a set and returns a non-negative number, subject to countable additivity of disjoint sets constraints. (Countable additivity (or $\sigma$ additivity): The measure of the union of a finite number or an infinite countable number of sets that are pairwise disjoint is the sum of the measures of the sets.)
 - Examples: Dirichlet process, Pitman-Yor process.
 - Applications: mixture models (see below).
 - Special case: point processes (integer-valued measure, the number of points that fall in a given set).
@@ -122,5 +122,8 @@ To do forward simulation of a CTMC, do the following:
 - Therefore, we can sample from the conditional distribution, $Y\_{0.2} | (Y\_{0.1}, Y\_{0.3})$, which is also Normal&mdash;see Rasmussen's book on Gaussian processes, available online [here](http://www.gaussianprocess.org/gpml/chapters/RWA.pdf).
 
 ### Supplementary references and notes
-
 **Under construction**
+
+1- http://en.wikipedia.org/wiki/Continuous-time_Markov_chain
+
+2- http://en.wikipedia.org/wiki/Brownian_motion
