@@ -122,7 +122,7 @@ To do forward simulation of a CTMC, do the following:
 - Therefore, we can sample from the conditional distribution, $Y\_{0.2} | (Y\_{0.1}, Y\_{0.3})$, which is also Normal&mdash;see Rasmussen's book on Gaussian processes, available online [here](http://www.gaussianprocess.org/gpml/chapters/RWA.pdf).
 
 ### Supplementary references and notes
-***Under construction***
+**Under construction**
 
 1- http://en.wikipedia.org/wiki/Continuous-time_Markov_chain
 
