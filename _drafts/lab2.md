@@ -58,10 +58,10 @@ Important differences of blocks from the stack (vs. those from the heap):
 
 #### Scope
 
-When calling a function, information (above) regarding the function is placed in the stack directly above the caller function. 
-Every Java program begins execution from a special function called ``main``. Therefore, it is the first thing placed on the stack.
-
-*** TODO: complete this section ***
+- When calling a function, information (mentioned above) is placed in the stack directly above the calling function. 
+- When a variable is declared, each variable has associated **scope**. 
+- The local variables are accessible only inside the currently executing function and are stored in the stack
+- The global variables are stored in the heap and are accessible from the executing function depending on the scope of the function
 
 ***Some more topics:***
 - Differences with R
@@ -92,5 +92,3 @@ Every Java program begins execution from a special function called ``main``. The
 	  Run the program.
   6. Download and setup [Gradle](http://www.gradle.org/)
   
-### For the next lab ###
-
