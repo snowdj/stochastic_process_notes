@@ -29,6 +29,13 @@ Syllabus: Statistical Modeling with Stochastic Processes.
    - in class and/or labs and/or piazza and/or office hours, reporting typos in notes, 
    - scribing/editing activity.
    
+**Handing-in exercises:**
+
+- Organize your files into zip archives as explained in Exercise 1
+- Go to the following [URL](http://dropitto.me/bouchard).
+- Enter password ``bayes`` (no capitals)
+- You will see an upload button after login
+   
 **Editing duties:** Everyone should claim editorship of one lecture. There should be one or two editors per lecture. The editor(s) are responsible for:
 
 1. Adding some supplementary references, notes, observations, etc.

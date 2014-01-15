@@ -8,7 +8,12 @@ Bayesian non-parametrics being a major area of application of stochastic process
 
 ### Overview of some useful concepts from Bayesian statistics
 
-Consider the following generic statistical problem: we observe $x \in \Xscr$, we have a model of how this observation came to be in terms of some unknown quantities $z \in \Zscr$, and we want to make some decision (for example, reconstructing some of the unknown quantities, or forecasting future observations, etc). More generally, we want to device a decision-making strategy, which we formalize as an **estimator**: a function of the observation $\delta(x)$. 
+Consider the following generic statistical problem: 
+
+- we observe $x \in \Xscr$, we have a model of how this observation came to be in terms of some unknown quantities $z \in \Zscr$, 
+- and we want to make some decision (for example, reconstructing some of the unknown quantities, or forecasting future observations, etc). 
+
+More generally, we want to device a decision-making strategy, which we formalize as an **estimator**: a function of the observation $\delta(x)$. 
 
 We want this estimator to be as "good" as possible. Under a certain criterion of goodness, we will see that the Bayesian framework provides a principled and systematic way of specifying a "best" estimator. 
 
@@ -16,7 +21,9 @@ We want this estimator to be as "good" as possible. Under a certain criterion of
 
 Here is a very frequent **mis-conception** about the Bayesian framework that we will try to correct: "Bayesian methods consist in computing the posterior distribution and returning the point with the highest posterior density (1)." Other variants: "Bayesian methods consist in returning the posterior expectation of the parameters (2)." 
 
-While the posterior distribution is always involved in Bayesian methods, and that this posterior is *sometimes* used as in (1, 2) above, in other cases the Bayesian framework will prescribe other uses of the posterior. How to use the posterior in general under the Bayesian framework is specified by the *Bayes estimator*.
+While the posterior distribution is always involved in Bayesian methods, and that this posterior is *sometimes* used as in (1, 2) above, in other cases the Bayesian framework will prescribe other uses of the posterior. 
+
+How to use the posterior in general under the Bayesian framework is specified by the *Bayes estimator*.
 
 In full generality, approaching a problem in a Bayesian way consists in: 
 
@@ -34,17 +41,25 @@ Solving an optimization problem over a space of estimators seems quite abstract 
 
 This estimator $\delta^\*$ is called a **Bayes estimator.**
 
-This means that given a model and a goal, the Bayesian framework provides in principle a recipe for constructing an estimator. Moreover, if the loss is strictly convex, the Bayes estimator is unique. See Robert 2007. In other words, under strictly convex losses, the Bayesian framework endows the space of estimators with a total order.  However, the computation required to implement this recipe may be considerable. This explains why computational statistics plays a large role in Bayesian statistics and in this course. 
+This means that given a model and a goal, the Bayesian framework provides in principle a recipe for constructing an estimator. 
+
+Moreover, if the loss is strictly convex, the Bayes estimator is unique. See Robert 2007. In other words, under strictly convex losses, the Bayesian framework endows the space of estimators with a total order.  
+
+However, the computation required to implement this recipe may be considerable. This explains why computational statistics plays a large role in Bayesian statistics and in this course. 
 
 ---
 
-**Optional exercise:** If you have not seen this material before, show that in the special case where $L$ is the squared loss, one can compute a simple expression for the minimizer, which is simply $\delta^*(X) = \E[Z|X]$. For other losses finding such an expression may or may not be possible. We will talk about approximation strategies for the latter case later in this course. 
+**Optional exercise:** If you have not seen this material before, show that in the special case where $L$ is the squared loss, one can compute a simple expression for the minimizer, which is simply $\delta^*(X) = \E[Z|X]$. 
+
+For other losses finding such an expression may or may not be possible. We will talk about approximation strategies for the latter case later in this course. 
 
 ---
 
 Note that other criteria certainly exist for selecting estimators, in particular frequentist criteria. Some of these criteria, such as admissibility, do not create a total order on estimator (even under strictly convex losses), they only provide a partial order. Moreover, since the Bayes estimator can be shown to be non-suboptimal under this criterion as well (in other words, admissible)
 
-Of course, these nice properties assume that the model is a true representation of the world (a **well-specified model**), a condition that is almost always false. This provides a motivation for creating richer models that are more faithful to reality. In particular, models of adaptive complexity, that become progressively complex as more data becomes available. These models are called **non-parametric** (more formal definition below). As alluded last lecture, stochastic processes provide a formidable tool for constructing these non-parametric models.
+Of course, these nice properties assume that the model is a true representation of the world (a **well-specified model**), a condition that is almost always false. 
+
+This provides a motivation for creating richer models that are more faithful to reality. In particular, models of adaptive complexity, that become progressively complex as more data becomes available. These models are called **non-parametric** (more formal definition below). As alluded last lecture, stochastic processes provide a formidable tool for constructing these non-parametric models.
 
 #### Well-specified Bayesian models exist, but can force us to be non-parametric
 
@@ -62,7 +77,12 @@ Let us make the discussion on de Finetti from last week more formal.
 
 **Example:**  <img src="{{ site.url }}/images/polya-urn.jpg" alt="Drawing" style="width: 200px; float: right"/>
 
-In the first exercise, you will show that any finite or infinite list of tokens sampled from a CRP is exchangeable. Here is a consequence: pick $G\_0$ to be a discrete measure on two colors (red and blue): red with probability $2/3$, and blue with probability $1/3$ (we assumed last time that $G\_0$ was non-atomic, but the theory extends easily to atomic $G\_0$, the only difference is that two different tables can pick the same dish type). Interpretation as an urn model? 
+In the first exercise, you will show that any finite or infinite list of tokens sampled from a CRP is exchangeable. Here is a consequence: 
+
+- pick $G\_0$ to be a discrete measure on two colors (red and blue): 
+    - red with probability $2/3$, and 
+    - blue with probability $1/3$ (we assumed last time that $G\_0$ was non-atomic, but the theory extends easily to atomic $G\_0$, the only difference is that two different tables can pick the same dish type). 
+- Interpretation as an urn model? 
 
 This means that the probability of observing the sequence of colors
 
@@ -153,7 +173,7 @@ Finding a collection that satisfies these two conditions is easy. For example, i
 But in order for the conjugate approach to be computationally feasible, we should also ensure that:
 
 - Each member $p\_h$ of the family should be tractable, in particular we should have an efficient algorithm for computing the normalization constant of arbitrary members.
-- We should also have an efficient algorithm for finding updated parameters $h'$, as a function of the observed data $x$ and prior hyper-parameters $h_0$, $h' = u(x, h\_0)$.
+- We should also have an efficient algorithm for finding updated parameters $h'$, as a function of the observed data $x$ and prior hyper-parameters $h\_0$, $h' = u(x, h\_0)$.
 
 ---
 
@@ -208,54 +228,6 @@ One still has to pick a new prior $p^*$ on $H$, and to go again through steps 1-
 
 The cost of taking the hierarchical Bayes route is that it generally requires resorting to Monte Carlo approximation, even if the initial model is conjugate.
 
-### Composing many parametric models into a larger, non-parametric model
-
-Based on these [notes](http://www.stat.ubc.ca/~bouchard/courses/stat547-sp2011/notes-part3.pdf) from the previous time I taught the course.
-
-We can now integrate these new concepts to make our picture of Bayesian non-parametric mixture models more precise. Let us start with a model based on the stick breaking representation. Later, we will connect it to the CRP representation.
-
-We pick:
-
-- A likelihood model with densit $\ell(x|\theta)$ over each individual observation (a weight). For example, a normal distribution (a bit broken since weights are positive, but should suffice for the purpose of exposition).
-- A base measure that is conjugate to $G\_0$, with density $p(\theta)$. As before, $\theta$ is a pair containing a real number (modelling a sub-population mean) and a positive real number (modelling a sub-population variance (or equivalently, precision, the inverse of the variance)). For example, a normal-inverse-gamma distribution.
-- Some hyper-parameters for this parametric prior, as well as an hyper-parameter $\alpha\_0$ for the Dirichlet prior.
-
-To simulate a dataset, use the following steps:
-
-1. Break a stick $\pi$ according to the algorithm covered last time.
-2. Simulate an infinite sequence $(\theta\_1, \theta\_2, \dots)$ of iid normal-inverse-gamma random variables. The first one corresponds to the first stick segment, the second, to the second segment, etc.
-3. For each datapoint $i$:
-     1. Throw a dart on the stick. Look at the random stick index $Z\_i$. Grab the parameter $\theta\_{Z\_i}$ corresponding to it.
-     2. Simulate a new datapoint $X\_i$ according to $\ell(\cdot | \theta\_{Z\_i})$.
-     
-While forward simulation is easy, exact posterior simulation is computationally hard, as we will see later in this course. We will therefore need approximate posterior simulation. The good news is that we need to show that we can do only one additional operation: computing the density of a realization of $\pi, Z, X$. 
-
-Computing the density of a realization can be easy or hard, depending on the situation. It is hard when there is a complicated set of outcomes that lead to the same realization. Fortunately, this is not the case here. 
-
-Another complication factor is that the space is infinite-dimensional, and taking an infinite product of densities is ill-behaved. We will see two elegant ways of resolving this next week. For now, let us just **truncated** the DP: for some fixed $K$, set $\beta\_K = 1$. This gives probability zero to the subsequent components. We can then express the joint distribution of $\pi, Z, X$ via the density:
-
-\\begin{eqnarray}
-p(\pi, z, x) = \left(\prod\_{k=1}^K \Beta(\beta\_k(\pi); 1, \alpha\_0) p(\theta\_k) \right) \left( \prod\_{i=1}^N \Mult(z\_i; \pi) \ell(x\_i | \theta\_{z\_i}) \right).
-\\end{eqnarray}
-
-This would, in principle, be the only problem specific calculation that would be needed to run a basic MCMC sampler for posterior simulation of a truncated DP.
-
-<!-- evaluating likelihood at a point -->
-
-#### FDDs of a DP
-
-Consider the following thought experiment:
-
-1. Let us fix a partition of $\Omega$, $A\_1, A\_2, A\_3$. <img src="{{ site.url }}/images/partition.jpg" alt="Drawing" style="width: 100px; float: right"/> 
-2. Imagine that we simulate a realization of $G$. 
-3. Let us look at $G(A\_1)$. What is that? Just the sum of the heights of the sticks that fall in $A\_1$. 
-4. Do the same for $A\_2, A\_3$. We get a triplet of positive real numbers $(A\_1, A\_2, A\_3)$.
-5. Now let's repeat the steps 2-4. We get a list of triplets. Let's ask the following question: what is the multivariate distribution of these triplets? 
-
-**Equivalent definition of a Dirichlet Process:** We say that $G : \Omega' \to (\sa\_{\Omega} \to [0, 1])$ is distributed according to the Dirichlet process distribution, denoted $G \sim \DP(\alpha\_0, G\_0)$, if for all measurable partitions of $\Omega$, $(A\_1, \dots, A\_m)$, the FDDs are Dirichlet distributed:
-\\begin{eqnarray}
-(G(A\_1), \dots, G(A\_m)) \sim \Dir(\alpha\_0 G\_0(A\_1), \dots, \alpha\_0 G\_0(A\_m)).
-\\end{eqnarray}
 
 
 
