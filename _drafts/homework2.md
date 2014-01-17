@@ -30,18 +30,17 @@ You will have two options for solving this exercise:
 
 #### Web-based JAGS
 
-1. Access this [URL](http://54.200.129.218/public_models/1). Use chrome with a large window size if possible. ***TODO: CHANGE THIS*** 
-   - Username: ``testUser1``
-   - Password: ``password``
+1. Access this [URL](http://54.200.129.218/public_models/1). Use chrome with a large window size if possible.
+   - Username: ``your student number``
+   - Password: ``your student number``
 2. Click on the file on the left that you want to edit.
 3. Write down the model in ``clustering.jags`` and the script controlling the number of iterations, variables to monitor, etc., in ``clustering.txt`` **WARNING:** make sure to press ``commit`` regularly and before switching files to edit.
 4. To run:
-   - commit your changes
    - you need to select the jags script you want to run. 
    - click on ``clustering.jags`` and then:
-   - click on the star located besides the filename. 
+   - click on the star '*' located besides the filename. 
    - click on ``Run``; this may take some time
-   - once the execution is complete, you can press ``Download`` to get the output in a zip file.
+   - once the execution is complete, you can press ``Download`` to get the output in a zip file. There will also be a textfile within the zip folder that provides some detail on the job run.
    
 #### Reading CODA files
 
