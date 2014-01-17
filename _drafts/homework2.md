@@ -103,4 +103,9 @@ We will use the following simple kinetics model (see the the file located [here]
 
 Your answers should consists in two file: a zip with the CODA samples, and a pdf containing density estimates of the posterior depths at time step 3, 10 and 19. Interpret and comment on whether these seem reasonable.
 
+### Optional question 3
+
+**Will be released shortly**
+
+
 
