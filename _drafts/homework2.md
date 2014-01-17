@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Exercise 2: Bayesian background"
+title: "Exercise 2: Exploring Bayesian models with JAGS"
 category: 'Homework'
 ---
 

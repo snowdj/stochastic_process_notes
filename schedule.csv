@@ -2,9 +2,11 @@
 "Jan 6",,"Overview, motivation. Forward simulation: brownian motion, CTMCs","Exercise 1",
 "Jan 8",,"Forward simulation continued. Motivations for Bayesian nonparametrics.",,
 "Jan 13",,"Background: parametric Bayesian statistics",,
-"Jan 15",,"Dirichlet process: properties and extensions","Exercise 2","Exercise 1"
+"Jan 15",,"Dirichlet process: properties and extensions",,"Exercise 1"
+"Jan 17",,,"Exercise 2",
 "Jan 20",,"Inference 1",,
-"Jan 22",,"Topics in Bayesian non-parametrics","Exercise 3","Exercise 2"
+"Jan 22",,"Topics in Bayesian non-parametrics","Exercise 3 (estimated)",
+"Jan 24",,,,"Exercise 2"
 "Jan 27",,"Inference 2",,
 "Jan 29",,"Jump processes. Processes on combinatorial objects.","Exercise 4","Exercise 3"
 "Feb 03",,"Diffusions. ",,

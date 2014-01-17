@@ -4,6 +4,12 @@ title: "Lecture 3: Bayesian statistics: from parametric to non-parametric"
 category: 'Lecture'
 ---
 
+Instructor: Alexandre Bouchard-C&ocirc;t&eacute;
+
+Editor: Vincenzo Coia
+
+### Plan
+
 Bayesian non-parametrics being a major area of application of stochastic processes in statistics, we will devote the first few weeks on the topic. But before, let us review some concepts from parametric Bayesian statistics that will be useful in transitioning towards the non-parametric setup.
 
 ### Overview of some useful concepts from Bayesian statistics

@@ -4,6 +4,9 @@ title: "Lecture 2: Forward sampling continued"
 category: 'Lecture'
 ---
 
+Instructor: Alexandre Bouchard-C&ocirc;t&eacute;
+
+Editor: Jonathan Baik
 
 ### More detailed overview via *Forward Simulation* (continued)
 

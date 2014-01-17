@@ -4,6 +4,9 @@ title: "Lecture 1: Overview"
 category: 'Lecture'
 ---
 
+Instructor: Alexandre Bouchard-C&ocirc;t&eacute;
+
+Editor: Fatemeh Dorri
 
 ### Brief Overview
 
