@@ -92,23 +92,14 @@ The objective is to reconstruct a trajectory given only its end-points and noisy
 
 The true trajectory (number of time steps=20) is shown in the figure on the right  (where the $z$ axis is the depth), but note that your algorithm should only use the endpoints of this strategy. Your goal is to approximate the posterior density of the depth at time step 3, 10, and 19.
 
-We will use the following simple kinetics model:
+We will use the following simple kinetics model (see the the file located [here]({{ site.url }}/data/trajectory/question2.data) for actual values of the variables used below):
 
 - we ignore friction
-- we treat acceleration as instantaneous pulses, independently and normally distributed on each axis (with mean and sd given by ``
+- we treat acceleration as instantaneous pulses, one at each point in the discretization, independently and normally distributed on each axis (with mean and sd given by ``true.accel.mean`` and ``true.accel.sd``)
+- we only observed a noisy version of each of the accelerations, assumed to be normally distributed around the truth, with sd given by ``accel.error.sd``
+- the time interval between time discretization grid points is assumed to be ``deltat``
+- only the initial position, ``true.pos[1,]``, initial velocity, ``true.velo[1,]``, and final position, ``true.pos[len,]``
 
-
-More precisely, the information you can use is in the file located [here]({{ site.url }}/data/trajectory/question2.data). It contains:
-
-- 
-
- 
-
-figure, say its the true one
-
-
-
-simplified dynamics
 
 z axis: depth
 
