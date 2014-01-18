@@ -17,7 +17,7 @@ Also, in preparation for the next exercise, it might be useful to start reading 
 - [Learning the Java Language](http://docs.oracle.com/javase/tutorial/java/index.html) (you can skip the following topics on first reading: nested classes, annotations, generics) 
 - [Collections](http://docs.oracle.com/javase/tutorial/collections/index.html) (you can skip the following topics on first reading: Aggregate Operations, custom implementation, Interoperability)
 
-### JAGS resources
+### Resources for this assignment
 
 #### Logistics
 
@@ -26,7 +26,7 @@ You should hand-in the CODA files produced by the MCMC run (see below), archived
 You will have two options for solving this exercise:
 
 - Use a web-based tool designed for this course, where you edit the model online and the code is executed on Amazon EC2 (see instructions below).
-- Install JAGS locally (open source software available at [http://mcmc-jags.sourceforge.net](http://mcmc-jags.sourceforge.net)). Even if you choose this option, have a quick look at the web-based tool as it contains some skeleton files that will help you get started.
+- Install JAGS locally (open source software available at [http://mcmc-jags.sourceforge.net](http://mcmc-jags.sourceforge.net)). 
 
 #### Web-based JAGS
 
@@ -34,13 +34,20 @@ You will have two options for solving this exercise:
    - Username: ``your student number``
    - Password: ``your student number``
 2. Click on the file on the left that you want to edit.
-3. Write down the model in ``clustering.jags`` and the script controlling the number of iterations, variables to monitor, etc., in ``clustering.txt`` **WARNING:** make sure to press ``commit`` regularly and before switching files to edit.
+3. Write down the model in ``clustering.txt`` and the script controlling the number of iterations, variables to monitor, etc., in ``clustering.jags`` **WARNING:** make sure to press ``commit`` regularly and before switching files to edit.
 4. To run:
    - you need to select the jags script you want to run. 
    - click on ``clustering.jags`` and then:
    - click on the star '*' located besides the filename. 
    - click on ``Run``; this may take some time
    - once the execution is complete, you can press ``Download`` to get the output in a zip file. There will also be a textfile within the zip folder that provides some detail on the job run.
+   
+#### Skeleton files
+
+Please use these skeleton files that contain some initial setup for answering the questions:
+
+- [Question 1]({{ site.url }}/data/geyser/skeleton-question1.zip)
+- [Question 2]({{ site.url }}/data/trajectory/skeleton-question2.zip)
    
 #### Reading CODA files
 
