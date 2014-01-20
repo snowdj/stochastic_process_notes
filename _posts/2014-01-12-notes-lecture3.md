@@ -240,8 +240,6 @@ The cost of taking the hierarchical Bayes route is that it generally requires re
 
 ### Supplementary references and notes
 
-**Under construction**
-
 **Robert, C. (2007) The Bayesian Choice.** An excellent textbook, especially for the theoretically foundations of Bayesian statistics. Also covers many practical topics. Most relevant to this course are chapters 2, 3.1-3.3, 4.1-4.2.
 
 **van der Vaart, A.W. (1998) Asymptotic Statistics.** Chapter 10 contains a formal treatment of the asymptotic properties of parametric Bayesian procedures. Note that a different treatment is needed for non-parametric Bayesian procedures. We will come back to this issue next week.
