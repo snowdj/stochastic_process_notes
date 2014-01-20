@@ -61,7 +61,7 @@ For other losses finding such an expression may or may not be possible. We will 
 
 ---
 
-Note that other criteria certainly exist for selecting estimators, in particular frequentist criteria. Some of these criteria, such as admissibility (http://en.wikipedia.org/wiki/Admissible_decision_rule), do not create a total order on the estimator (even under strictly convex losses), they only provide a partial order. Moreover, since the Bayes estimator can be shown to be non-suboptimal under this criterion as well (in other words, admissible)
+Note that other criteria certainly exist for selecting estimators, in particular frequentist criteria. Some of these criteria, such as [admissibility](http://en.wikipedia.org/wiki/Admissible_decision_rule), do not create a total order on the estimator (even under strictly convex losses), they only provide a partial order. Moreover, since the Bayes estimator can be shown to be non-suboptimal under this criterion as well (in other words, admissible)
 
 Of course, these nice properties assume that the model is a true representation of the world (a **well-specified model**), a condition that is almost always false. 
 
