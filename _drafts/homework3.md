@@ -28,10 +28,13 @@ NOTE: don't forget to use your tutorial making tool!!
 
 ### Question 2: Gibbs sampler
 
-TODO
+- naive one
+- reducing the running time from K^2 to K
+- deriving Bayes estimator for the density estimation
 
 ### Optional questions
 
-- split-merge?
-- stick-breaking
+- Peskun speedup
+- Distributed stick breaking implementation
+- Global stick moves (change the order of the cluster indicators) [nb: can be done using SMC]
 
