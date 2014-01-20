@@ -229,7 +229,7 @@ Hierarchical Bayesian models are conceptually simple:
 2. We make the hyper-parameter $h$ be the realization of a random variable $H$. This allows the dataset to originate from different populations.
 3. We force all $Z\_j$ to share this one hyper-parameter. This step is crucial as it allows information to flow between the datasets.
 
-<img src="{{ site.url }}/images/hierarchical-lec3.png" alt="Drawing" style="width: 200px; float: center"/>
+<img src="{{ site.url }}/images/hierarchical-Lec3.png" alt="Drawing" style="width: 200px; float: center"/>
 
 One still has to pick a new prior $p^*$ on $H$, and to go again through steps 1-4 above, but this time with more data incorporated. Note that this process can be iterated as long as there is some form of known hierarchical structure in the data (as a concrete example of a type of dataset that has this property, see this non-parametric Bayesian approach to $n$-gram modelling: [Teh, 2006](http://acl.ldc.upenn.edu/P/P06/P06-1124.pdf)). More complicated techniques are needed when the hierarchical structure is unknown (we will talk about two of these techniques later in this course, namely hierarchical clustering and phylogenetics).
 
