@@ -27,7 +27,7 @@ To simulate a dataset, use the following steps:
 1. Break a stick $\pi$ according to the algorithm covered last time.
 2. Simulate an infinite sequence $(\theta\_1, \theta\_2, \dots)$ of iid normal-inverse-gamma random variables. The first one corresponds to the first stick segment, the second, to the second segment, etc.
 3. For each datapoint $i$:
-     1. Throw a dart on the stick. Look at the random stick index $Z\_i$. Grab the parameter $\theta\_{Z\_i}$ corresponding to it.
+     1. Throw a dart on the stick. Look at the random stick index $Z\_i$. Grab the corresponding parameter $\theta\_{Z\_i}$.
      2. Simulate a new datapoint $X\_i$ according to $\ell(\cdot | \theta\_{Z\_i})$.
      
 #### Truncated DPM posterior simulation
@@ -36,26 +36,26 @@ While forward simulation is easy, exact posterior simulation is computationally 
 
 Computing the density of a realization can be easy or hard, depending on the situation. It is hard when there is a complicated set of outcomes that lead to the same realization. Fortunately, this is not the case here. 
 
-Another complication factor is that the space is infinite-dimensional, and taking an infinite product of densities is ill-behaved. We will see two elegant ways of resolving this shortly. For now, let us just **truncated** the DP: for some fixed $K$, set $\beta\_K = 1$. This gives probability zero to the subsequent components. We can then express the joint distribution of $\pi, \theta, Z, X$ via the density:
+Another complication factor is that the space is infinite-dimensional, and taking an infinite product of densities is ill-behaved. We will see two elegant ways of resolving this shortly. For now, let us just **truncate** the DP: for some fixed $K$, set $\beta\_K = 1$. This gives probability zero to the subsequent components. We can then express the joint distribution of $\pi, \theta, Z, X$ via the density:
 
 \\begin{eqnarray}\label{eq:joint}
 p(\pi, \theta, z, x) = \left(\prod\_{k=1}^K \Beta(\beta\_k(\pi); 1, \alpha\_0) p(\theta\_k) \right) \left( \prod\_{i=1}^N \Mult(z\_i; \pi) \ell(x\_i | \theta\_{z\_i}) \right).
 \\end{eqnarray}
 
-Here $\beta\_k(\pi)$ is a deterministic function that return the $k-th$ beta random variable used in the stick breaking process given a broken stick $\pi$ (convince yourself that these beta variables can be recovered deterministically from $\pi$).
+Here $\beta\_k(\pi)$ is a deterministic function that returns the $k-th$ beta random variable used in the stick breaking process given a broken stick $\pi$ (convince yourself that these beta variables can be recovered deterministically from $\pi$). *add a brief hint as to how this can occur?*
 
 Evaluation of Equation~(\ref{eq:joint}) is the main calculation that would be needed to run a basic MCMC sampler for posterior simulation of a truncated DP.
 
 #### Dish marginalization when conjugacy is available
 
-**Rao-Blackwellization:** as we will see, it is often useful to marginalize some variables and to define MCMC samplers on the smaller space obtained after marginalization.
+**Rao-Blackwellization:** as we will see, it is often useful to marginalize some variables and to then define MCMC samplers on this smaller space (obtained through marginalization).
 
-We will show this is possible to marginalize both $\pi$ and $\theta$. Today, we consider marginalizing $\theta$ only first.
+We will show it is possible to marginalize both $\pi$ and $\theta$. Today, we first consider marginalizing only $\theta$.
 
 **Example:** Let us look at an example how this works: 
 
-- Suppose that in a small dataset of size three, the current state of the sampler is set as follows: the current table assignment $z$ consists in 
-  - two datapoints at a table, 
+- Suppose that in a small dataset of size three, the current state of the sampler is set as follows: the current table assignment $z$ consists of 
+  - two datapoints at one table, 
   - and one datapoint alone at its table. 
 - Set the truncation level $K=4$.  
 
@@ -81,7 +81,7 @@ For the occupied tables, we get a product of  factors of the form:
 \int   p(\theta\_2) \ell(x\_2 | \theta\_2) \ell(x\_3 | \theta\_2) \ud \theta\_2.
 \\end{eqnarray}
 
-But this is just $m(x\_2, x\_3)$, which we can handle by conjugacy! Recall from last lecture: 
+But this is just $m(x\_2, x\_3)$, which we can handle by conjugacy! Recall from last [lecture]({{ site.url }}/lecture/2014/01/02/notes-lecture2.html): 
 
 \\begin{eqnarray}
 m(x) & = & \frac{p\_{h}(z) \ell(x | z)}{p(z | x)} \\\\
@@ -94,7 +94,7 @@ Here $x$ is a subset of the dataset, given by the subset of the points that shar
 
 - Note first that the assignments $z$ induce a partition $\part(z)$ of the customer indices (datapoint indices $\\{1, 2, \dots, N\\}$). 
 - Each block $B \in \part(z)$ then corresponds to the subset of *indices* of the customers sitting at a table. 
-- Finally, we will write $x\_B$ for the subset of the observations themselves, for example in the above example $\part(z) = \\{\\{1\\}, \\{2,3\\}\\}$ and if $B = \\{2, 3\\}, x\_B = (x\_2, x\_3)$.
+- Finally, we will write $x\_B$ for the subset of the observations themselves; for example in the above example $\part(z) = \\{\\{1\\}, \\{2,3\\}\\}$ and if $B = \\{2, 3\\}, x\_B = (x\_2, x\_3)$.
 
 This gives us:
 
@@ -149,7 +149,7 @@ Consider the following thought experiment:
 
 **Question:** First, why is this declarative definition well-defined, in other words, why are we guaranteed that there exists a unique process that satisfies Equation~(\ref{eq:dp-marg})?
 
-**Anser:** This follows from the [Kolmogorov extension theorem](http://en.wikipedia.org/wiki/Kolmogorov_extension_theorem). We will revisit this theorem later in more detail, but informally it says that if we can show that the marginal specified by Equation~(\ref{eq:dp-marg}) are *consistent*, then existence and uniqueness of a process is guaranteed by the Kolmogorov extension theorem.
+**Answer:** This follows from the [Kolmogorov extension theorem](http://en.wikipedia.org/wiki/Kolmogorov_extension_theorem). We will revisit this theorem later in more detail, but informally it says that if we can show that the marginal specified by Equation~(\ref{eq:dp-marg}) are *consistent*, then existence and uniqueness of a process is guaranteed by the Kolmogorov extension theorem.
 
 The main step can be illustrated by this example:
 
@@ -254,12 +254,16 @@ G | \utheta\_1, \dots, \utheta\_n \sim \dirp\left(\alpha\_0 + n, \frac{\alpha\_0
 
 #### Equivalence of stick breaking and process definitions
 
-Refer to these [notes]([notes](http://www.stat.ubc.ca/~bouchard/courses/stat547-sp2011/notes-part2.pdf) from the first time I taught the course.
-
-
+Refer to section 2.5 of these [notes]([notes](http://www.stat.ubc.ca/~bouchard/courses/stat547-sp2011/notes-part2.pdf) from the first time I taught the course.
 
 
 
 ### Supplementary references and notes
 
-**Under construction**
+- [Markov Chain Sampling Methods for Dirichlet Process Mixture Models](http://www.jstor.org/stable/1390653)
+Radford M. Neal
+Journal of Computational and Graphical Statistics , Vol. 9, No. 2 (Jun., 2000) , pp. 249-265 
+
+- [Gibbs Sampling Methods for Stick-Breaking Priors](http://www.jstor.org/stable/2670356)
+Hemant Ishwaran and Lancelot F. James
+Journal of the American Statistical Association , Vol. 96, No. 453 (Mar., 2001) , pp. 161-173
