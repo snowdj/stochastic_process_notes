@@ -19,7 +19,7 @@ We can now integrate these new concepts to make our picture of Bayesian non-para
 We pick:
 
 - A likelihood model with density $\ell(x|\theta)$ over each individual observation (a weight). For example, a normal distribution (a bit broken since weights are positive, but should suffice for the purpose of exposition).
-- A base measure that is conjugate to $G\_0$, with density $p(\theta)$. As before, $\theta$ is a pair containing a real number (modelling a sub-population mean) and a positive real number (modelling a sub-population variance (or equivalently, precision, the inverse of the variance)). For example, a normal-inverse-gamma distribution.
+- A conjugate base measure, $G\_0$, with density $p(\theta)$. As before, $\theta$ is a pair containing a real number (modelling a sub-population mean) and a positive real number (modelling a sub-population variance (or equivalently, precision, the inverse of the variance)). For example, a normal-inverse-gamma distribution.
 - Some hyper-parameters for this parametric prior, as well as an hyper-parameter $\alpha\_0$ for the Dirichlet prior.
 
 To simulate a dataset, use the following steps:
