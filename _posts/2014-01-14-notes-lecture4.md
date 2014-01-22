@@ -29,6 +29,8 @@ To simulate a dataset, use the following steps:
 3. For each datapoint $i$:
      1. Throw a dart on the stick. Look at the random stick index $Z\_i$. Grab the corresponding parameter $\theta\_{Z\_i}$.
      2. Simulate a new datapoint $X\_i$ according to $\ell(\cdot | \theta\_{Z\_i})$.
+
+<img src="{{ site.url }}/images/dpm-gm.jpg" alt="DPMGM" style="width: 300px;"/>
      
 #### Truncated DPM posterior simulation
      
