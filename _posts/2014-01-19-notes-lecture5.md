@@ -6,7 +6,7 @@ category: 'Lecture'
 
 Instructor: Alexandre Bouchard-C&ocirc;t&eacute;
 
-Editor: TBA
+Editor: Neil Spencer
 
 ***TODO: Office hours scheduling***
 
