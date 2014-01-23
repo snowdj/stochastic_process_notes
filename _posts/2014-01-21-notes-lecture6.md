@@ -6,7 +6,7 @@ category: 'Lecture'
 
 Instructor: Alexandre Bouchard-C&ocirc;t&eacute;
 
-Editor: TBA
+Editor: David Lee and Fred Zhang
 
 In these note, we show examples of how Dirichlet processes can be composed into more complicated (and hopefully, more realistic) models, how they can be generalized (i.e. building large classes of stochastic processes), applied to different setups, and how they can be superseded by other types of stochastic processes.
 
@@ -73,9 +73,7 @@ in which $n^{u}\_{w}$ is the number of times $w$ was observed in all the trainin
 
 Note that in this setting, to do prediction we only need to know, for each context, the number of times each word appeared in the text. Consequently, we can marginalize the table assignments and there is no MCMC sampling required in this special case (this will not be true in the next models).
 
-
-
-**Language model using HDPs**
+#### HDP models
 
 A problem with the approach of the previous section is that the back-off model, the uniform distribution, is not very good.  A better option would be to back off to a context-free distribution over words.  One way to achieve this is to use as a base measure the MLE over words in the corpus instead of the uniform distribution.  This approach is called the empirical Bayes method.  Here we explore an alternative called a hierarchical Bayesian model.  
 
@@ -150,8 +148,8 @@ A basic Bayesian linear regression model has the following form:
 
 where $z\_i$ is a $D$-dimensional vector of input/covariates, $\theta$ is a $D$-dimensional parameter vector and $y\_i$ is a 1-dimensional response say.  Let $Z$ denote the $n$ by $D$ data matrix, and $Y$, the $n$ by $1$ training responses.  We put the following distributions on these variables: 
 \begin{eqnarray}
-\theta^{(d)}    &\sim N\left(0, \frac{1}{\tau\_2}\right), \text{ } d = 1, \ldots, D.\\
-  y\_i|\theta, z\_i &\sim N\left(\dotprod{\theta}{z\_i}, \frac{1}{\tau}\right). 
+\theta^{(d)}    &\sim& N\left(0, \textrm{precision}=\tau\_2\right), \text{ } d = 1, \ldots, D.\\\\
+  y\_i|\theta, z\_i &\sim& N\left(\dotprod{\theta}{z\_i}, \textrm{precision}=\tau\right). 
 \end{eqnarray}
 where $\tau\_1$ is a noise precision parameter, and $\tau\_2$ is an isotropic parameter regularization.\footnote{Note that this model does not depend on the prior on the covariates.  This has motivated G-priors ([Robert, 2007](http://www.amazon.com/Bayesian-Choice-Decision-Theoretic-Computational-Implementation/dp/0387715983)) with parameters that depend on $X$, which allow putting a prior over the precision parameters considered fixed in the model above.  On the other hand, in the DPM extension that will follow shortly, we will need to put a distribution on the input variable, since new datapoints will be assigned to a cluster using this distribution, which will then allow using the most appropriate set of regression parameters with higher probability.}
 
@@ -161,15 +159,45 @@ By conjugacy, we get the following posterior on the parameters:
 \end{eqnarray}
 where
 \begin{eqnarray}
-S\_n & =& (\tau^2 + \tau \transp{Z}Z)^{-1}\\\\
-M\_n &=& \tau S\_n \transp{Z} Y.
+S\_n & =& (\tau\_2 + \tau \transp{Z}\ Z)^{-1}\\\\
+M\_n &=& \tau S\_n \transp{Z}\ Y.
 \end{eqnarray}
+
+---
+
+**Background:** How to derive these types of equations? Intuitively, this follows from a trick known as "completing the square", which is often used to establish conjugacy in normal models. We show a simple univariate example here.
+
+We first show that posterior $\theta|y,z$ is normal. Since the posterior density over $\theta$ is proportional to the joint density, it is enough to show that 
+\begin{eqnarray}\label{eq:compl1}
+\underbrace{\exp\left( a \sum\_i (y\_i - \theta z\_i)^2 \right)}\_{\propto\  \textrm{ likelihood}} \underbrace{\exp\left( b \theta^2\right)}\_{\propto\ \textrm{ prior}},
+\end{eqnarray}
+where $a,b < 0$, is proportional to an expression of the form
+\begin{eqnarray}
+\exp\( c \theta^2 + d \theta + e\),
+\end{eqnarray}
+where $c$ should be negative. But by polynomial multiplication this is clearly true, with $c = b + a \sum\_i z\_i^2 < 0$.
+
+Next, to find the updated parameters of this posterior normal density, all we need to do is to rewrite our expression a second time, now into
+\begin{eqnarray}
+\exp(- h^2 (\theta - k)^2).
+\end{eqnarray}
+This is done by completing the squares, i.e. noting that a constant can be added to the quadratic form:
+\begin{eqnarray}\label{eq:compl2}
+\exp\( c \theta^2 + d \theta + e\) &=& \exp\left( c \theta^2 + d \theta + e + f - f\right) \\\\
+&\propto& \exp\left( c \theta^2 + d \theta + e + f\right).
+\end{eqnarray}
+
+Now that we have shown that Equation~(\ref{eq:compl1}) is proportional to Equation~(\ref{eq:compl2}), we are done since this expression is proportional to a normal density with precision $h$ and mean $k$, and is therefore equal (this argument sidesteps the difficulties of computing complicated normalization constants). 
+
+To generalize this argument to the multivariate setting, one can use the [Schur complement](http://en.wikipedia.org/wiki/Schur_complement).
+
+---
 
 Given a new covariate $z\_{n+1}$, the predictive distribution over $y\_{n+1}$ is then:
 \begin{eqnarray}
-y\_{n+1}|z\_{n+1}, y\_{1:n}, z\_{1:n} & \sim& N(\transp{M\_n} z\_{n+1}, \sigma\_n^2(z\_{n+1}))
+y\_{n+1}|z\_{n+1}, y\_{1:n}, z\_{1:n} & \sim& N(\transp{M\_n}\ z\_{n+1}, \sigma\_n^2(z\_{n+1}))
 \end{eqnarray}
-where $\sigma^2\_n(z) = \frac{1}{\tau} + \transp{z}S\_n z$.
+where $\sigma^2\_n(z) = \frac{1}{\tau} + \transp{z}\ S\_n\ z$.
 
 We now turn to the non parametric version of this model, which has the following graphical model:
 
@@ -189,9 +217,9 @@ Formally, we define the distributions as follows:
 \begin{eqnarray}
  \pi &\sim& \gem(\alpha\_0) \\\\
  x\_i|\pi & \sim &\mult(\pi)\\\\
- \theta\_c^{'(d)} & \sim & N\left(0, \frac{1}{\tau\_3}\right), d = 1, \dots, D; c = 1,2,\ldots\\\\
- \theta\_c^{(e)} &\sim& N\left(0, \frac{1}{\tau\_2}\right) \text{ } e=1, \ldots, D'\\\\
- z\_i | \theta, x\_i & \sim & N\left(\theta'\_{x\_i}, \frac{1}{\tau\_4}\right), \text{  } i= 1, \ldots, n+1\\\\
+ \theta\_c^{'(d)} & \sim & N\left(0, \textrm{precision}=\tau\_3\right), d = 1, \dots, D; c = 1,2,\ldots\\\\
+ \theta\_c^{(e)} &\sim& N\left(0, \textrm{precision}=\tau\_2\right) \text{ } e=1, \ldots, D'\\\\
+ z\_i | \theta, x\_i & \sim & N\left(\theta'\_{x\_i}, \textrm{precision}=\tau\_4\right), \text{  } i= 1, \ldots, n+1\\\\
  y\_i|z\_i,x\_i,\theta &\sim& N\left(\dotprod{\theta\_{x\_i}}{z\_i}, \frac{1}{\tau}\right),
 \end{eqnarray}
 where $\tau\_3$ acts as a regularization on the clustering parameter, and $\tau\_4$ as a noise precision parameter on the input variables.
@@ -205,8 +233,8 @@ Note that simulating the posterior of the cluster variables can be done using co
 where $D$ denotes the training data (inputs and outputs) as well as the new input $x\_{n+1}$.   The posterior mean takes a form similar to the parametric case, but defined on the subset of datapoints in the same cluster as the new data point in the current sample: 
 
 \begin{eqnarray}
-S\_n(x\_{1:(n+1)}) & = & (\tau^2 + \tau \transp{Z(x\_{1:(n+1)})}Z(x\_{1:(n+1)}))^{-1}\\\\
-M\_n(x\_{1:(n+1)}) &=& \tau S\_n(x\_{1:(n+1)}) \transp{Z(x\_{1:(n+1)})} Y.
+S\_n(x\_{1:(n+1)}) & = & (\tau^2 + \tau \transp{Z(x\_{1:(n+1)})}\ Z(x\_{1:(n+1)}))^{-1}\\\\
+M\_n(x\_{1:(n+1)}) &=& \tau S\_n(x\_{1:(n+1)}) \transp{Z(x\_{1:(n+1)})}\ Y.
 \end{eqnarray}
 where
 \begin{eqnarray}
@@ -221,6 +249,29 @@ where
 and $(i\_1,\ldots,i\_k)$ are the indices of the data matrix rows in the same cluster as $x\_{n+1}$.
 
 See [Hannah et al., 2011](http://castlelab.princeton.edu/Papers/Hannah%20Blei%20Powell-DP-GLM_JMLR_Jan2011.pdf) for a generalization of this idea to other GLMs, including an application to classification.
+
+
+### What is next?
+
+Here is an overview of some other active topics (each with a review/representative/recent paper) in the Bayesian non-parametric literature. We may spend more time on one or two of these, depending on the level of interest. Let me know if you think one of these will be particularly useful for your research.
+
+- [Infinite Hidden Markov Models](http://www.cs.berkeley.edu/~jordan/papers/stickyHDPHMM_LIDS_TR.pdf)
+- [Dependent Dirichlet Processes](http://www2.warwick.ac.uk/fac/sci/statistics/staff/academic-research/steel/steel_homepage/techrep/ddp.pdf)
+- [Indian Buffet Process](http://ai.stanford.edu/~tadayuki/papers/miller-phd-dissertation11.pdf)
+- [Normalized Random Measures](http://www.stats.ox.ac.uk/~teh/research/npbayes/FavTeh2013a.pdf)
+- [Gamma-exponential process](http://books.nips.cc/papers/files/nips24/NIPS2011_1162.pdf)
+- [Fragmentation-Coagulation](http://www.stats.ox.ac.uk/~teh/research/npbayes/TehEllBlu2013a.pdf)
+- [Random graphs](http://arxiv.org/abs/1401.1137)
+
+
+### Readings in preparation for next topics
+
+I will do a very quick review of 2-3, but if you haven't taken 547C with me (or equivalent), it is a good idea to do some pre-readings (and/or to ask your colleagues that did take 547C to help you).
+
+1. MCMC. Many tutorial available on the web, for example [Andrieu et al., 2003](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.13.7133&rep=rep1&type=pdf). For a video presentation: [Murray, 2009](http://videolectures.net/mlss09uk_murray_mcmc/).
+2. Importance sampling and SMC. Many tutorial available on the web, for example [Doucet and Johansen](http://www.cs.ubc.ca/~arnaud/doucet_johansen_tutorialPF.pdf) or [Doucet, 2010](http://www.stats.ox.ac.uk/~doucet/samsi_course.html).
+3. Poisson processes: [Kingman, 1993](http://www.iecn.u-nancy.fr/~chassain/djvu/Kingman%20Poisson%20Processes%20Oxford%20Studies%20in%20Probability%20%201993.pdf). Very readable. Skim these chapters if you can: 1-5, 8-9.
+    
 
 <!-- ### Poisson processes and Gamma construction
 
