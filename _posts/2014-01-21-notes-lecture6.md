@@ -48,7 +48,13 @@ To address the aforementioned problem, we introduce the following model, a Diric
    x^{u}\_{n}|\pi^u &\sim& \mult(\pi^u)\\\\
    y^{u}\_{n}|x^{u}\_{n},\theta^{u} &\sim& \delta\_{(\theta^{u}(x^{u}\_{n}))}
 \end{eqnarray}
-Here $y^{u}\_{i}$ is a word following prefix $u$ (from now on, we use the superscript to annotate the prefix/context under which the next word has to be predicted), and \delta\_{(\theta^{u}(x^{u}\_{n}))} is the Dirac delta function. A more compact way to write this is:
+Here $y^{u}\_{i}$ is a word following prefix $u$ (from now on, we use the superscript to annotate the prefix/context under which the next word has to be predicted), and \delta\_{(\theta^{u}(x^{u}\_{n}))} is the Dirac delta function.
+ 
+In the directed graphical model notation, this looks like the following:
+
+<img src="{{ site.url }}/images/languageModel-DP.jpg" alt="Drawing" style="width: 400px; "/> 
+
+A more compact way to write this is:
 \begin{eqnarray}
    G^{u} &\sim& \dirp(\alpha\_0, \unif(W))\\\\
    y^{u}\_{n}|G^{u} &\sim& G^u.
