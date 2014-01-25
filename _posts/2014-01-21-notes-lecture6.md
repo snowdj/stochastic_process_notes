@@ -292,3 +292,8 @@ I will do a very quick review of 2-3, but if you haven't taken 547C with me (or 
 **[Hjort NL, Holmes C, M&uuml;ller P, Walker SG (2010) *Bayesian Nonparametrics*, Cambridge University Press.](http://books.google.ca/books?isbn=0521513464)** Relevant parts include sections 5.1, 5.2, 5.4 and 5.7.1.
 
 **[Machine Learning - 2007 Advanced Tutorial Lecture Series, Department of Engineering, University of Cambridge.](http://mlg.eng.cam.ac.uk/tutorials/07/)** Slides by Teh YW on DP and HDP: [Link](http://mlg.eng.cam.ac.uk/tutorials/07/ywt.pdf)
+
+**[Bayesian Density Estimation and Inference Using Mixtures](http://www.tandfonline.com/doi/abs/10.1080/01621459.1995.10476550#.UuNZ1PRQ2BQ)
+Michael D. Escobar & Mike West
+Journal of the American Statistical Association, Volume 90, Issue 430, 1995, pp. 577-588.
+
