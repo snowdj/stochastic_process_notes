@@ -289,6 +289,6 @@ I will do a very quick review of 2-3, but if you haven't taken 547C with me (or 
 
 ### Supplementary references and notes
 
-**[Hjort NL, Holmes C, M\"{u}ller P, Walker SG (2010) *Bayesian Nonparametrics*, Cambridge University Press.](http://books.google.ca/books?isbn=0521513464)** Relevant parts include sections 5.1, 5.2, 5.4 and 5.7.1.
+**[Hjort NL, Holmes C, M&uuml;ller P, Walker SG (2010) *Bayesian Nonparametrics*, Cambridge University Press.](http://books.google.ca/books?isbn=0521513464)** Relevant parts include sections 5.1, 5.2, 5.4 and 5.7.1.
 
 **[Machine Learning - 2007 Advanced Tutorial Lecture Series, Department of Engineering, University of Cambridge.](http://mlg.eng.cam.ac.uk/tutorials/07/)** Slides by Teh YW on DP and HDP: [Link](http://mlg.eng.cam.ac.uk/tutorials/07/ywt.pdf)
