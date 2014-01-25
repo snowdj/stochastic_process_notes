@@ -105,11 +105,10 @@ To sample from the first prefix in the figure above:
 
 1. Throw a dart on the prefix-specific stick $\pi^u$
 2. If it ends up in segment $c$ (e.g. $c=3$ here), sample $c$ beta random variables to construct the first few sticks
-3. Extract $c$ samples from $G$, return the third one. This is done by recursing this process:  
+3. Extract $c$ samples from $G$, return the third one. $G$ can be sampled from using the following steps (the usual DP):
   1. Throw a dart on $\pi$, 
   2. If it end up in segment $c'$ (e.g. $c'=2$ here), sample $c'$ beta random variables to construct the first few sticks
-  3. Generate $\theta\_1, \dots, \theta\_{c'}$ and return $\theta\_3$ (return the sample from $G$).  
-
+  3. Generate $\theta\_1, \dots, \theta\_{c'}$ from $\unif(W)$. Here $\theta\_{c'}$ is the first realization of $G$. Repeat the process to generate $c=3$ realizations from $G$. Return $\theta\_3$.
 
 When the next sample is needed, only generate new sticks and base measure samples if the dart falls outside the region that was generated so far.  This means that samples from $G\_0$ are needed only when both the dart on the context specific and global sticks fall outside the sticks already generated.
 
@@ -213,16 +212,16 @@ This model seems complicated at first glance, but note that a standard DPM model
 
 The rest of the model is the same as the standard (parametric) Bayesian regression model, but with the set of parameter determined by the cluster indicator.
 
-The intuitive idea is that given a new datapoint, the prior over the $z$'s enable us to get a posterior over which cluster it belongs to.  For each cluster, we have a standard Bayesian linear regression model.
+The intuitive idea is that, given a new datapoint, the prior over the $z$'s enable us to get a posterior over which cluster it belongs to.  For each cluster, we have a standard Bayesian linear regression model.
 
 Formally, we define the distributions as follows:
 \begin{eqnarray}
  \pi &\sim& \gem(\alpha\_0) \\\\
  x\_i|\pi & \sim &\mult(\pi)\\\\
- \theta\_c^{'(d)} & \sim & N\left(0, \textrm{precision}=\tau\_3\right), d = 1, \dots, D; c = 1,2,\ldots\\\\
- \theta\_c^{(e)} &\sim& N\left(0, \textrm{precision}=\tau\_2\right) \text{ } e=1, \ldots, D'\\\\
- z\_i | \theta, x\_i & \sim & N\left(\theta'\_{x\_i}, \textrm{precision}=\tau\_4\right), \text{  } i= 1, \ldots, n+1\\\\
- y\_i|z\_i,x\_i,\theta &\sim& N\left(\dotprod{\theta\_{x\_i}}{z\_i}, \frac{1}{\tau}\right),
+ \theta\_c^{'(d)} & \sim & N\left(0, \textrm{precision}=\tau\_3\right), d = 1, \dots, D'; c = 1,2,\ldots\\\\
+ \theta\_c^{(e)} &\sim& N\left(0, \textrm{precision}=\tau\_2\right) \text{ } e=1, \ldots, D\\\\
+ z\_i | \theta', x\_i & \sim & N\left(\theta'\_{x\_i}, \textrm{precision}=\tau\_4\right), \text{  } i= 1, \ldots, n+1\\\\
+ y\_i|z\_i,x\_i,\theta &\sim& N\left(\dotprod{\theta\_{x\_i}}{z\_i}, \textrm{precision}=\tau\right),
 \end{eqnarray}
 where $\tau\_3$ acts as a regularization on the clustering parameter, and $\tau\_4$ as a noise precision parameter on the input variables.
 
@@ -290,4 +289,6 @@ I will do a very quick review of 2-3, but if you haven't taken 547C with me (or 
 
 ### Supplementary references and notes
 
-**Under construction**
+**[Hjort NL, Holmes C, M\"{u}ller P, Walker SG (2010) *Bayesian Nonparametrics*, Cambridge University Press.](http://books.google.ca/books?isbn=0521513464)** Relevant parts include sections 5.1, 5.2, 5.4 and 5.7.1.
+
+**[Machine Learning - 2007 Advanced Tutorial Lecture Series, Department of Engineering, University of Cambridge.](http://mlg.eng.cam.ac.uk/tutorials/07/)** Slides by Teh YW on DP and HDP: [Link](http://mlg.eng.cam.ac.uk/tutorials/07/ywt.pdf)
