@@ -283,5 +283,5 @@ I will do a very quick review of 2-3, but if you haven't taken 547C with me (or 
 
 **[Machine Learning - 2007 Advanced Tutorial Lecture Series, Department of Engineering, University of Cambridge.](http://mlg.eng.cam.ac.uk/tutorials/07/)** Slides by Teh YW on DP and HDP: [Link](http://mlg.eng.cam.ac.uk/tutorials/07/ywt.pdf)
 
-**[Escobar MD, West M, *Bayesian Density Estimation and Inference Using Mixtures.](http://www.tandfonline.com/doi/abs/10.1080/01621459.1995.10476550#.UuNZ1PRQ2BQ)** Journal of the American Statistical Association, Volume 90, Issue 430, 1995, pp. 577-588.
+**[Escobar MD, West M, *Bayesian Density Estimation and Inference Using Mixtures*.](http://www.tandfonline.com/doi/abs/10.1080/01621459.1995.10476550#.UuNZ1PRQ2BQ)** Journal of the American Statistical Association, Volume 90, Issue 430, 1995, pp. 577-588.
 
