@@ -52,7 +52,7 @@ Here $y^{u}\_{i}$ is a word following prefix $u$ (from now on, we use the supers
  
 In the directed graphical model notation, this looks like the following:
 
-<img src="{{ site.url }}/images/languageModel-DP.jpg" alt="Drawing" style="width: 400px; "/> 
+<img src="{{ site.url }}/images/languageModel-DP.jpg" alt="Drawing" style="width: 300px; "/> 
 
 A more compact way to write this is:
 \begin{eqnarray}
@@ -91,7 +91,7 @@ The basic idea behind HDPs is to let the base measure be itself a Dirichlet proc
 
 In the directed graphical model notation, this looks like (recall that boxes, called plates, mean repetition of the variables inside the box) the following:
 
-<img src="{{ site.url }}/images/HDP.jpg" alt="Drawing" style="width: 100px; "/> 
+<img src="{{ site.url }}/images/HDP.jpg" alt="Drawing" style="width: 200px; "/> 
 
 To make this model clearer, we will provide two equivalent ways of generating samples from it: as in the standard DP, both stick breaking and CRP constructions are possible. 
 
@@ -283,7 +283,5 @@ I will do a very quick review of 2-3, but if you haven't taken 547C with me (or 
 
 **[Machine Learning - 2007 Advanced Tutorial Lecture Series, Department of Engineering, University of Cambridge.](http://mlg.eng.cam.ac.uk/tutorials/07/)** Slides by Teh YW on DP and HDP: [Link](http://mlg.eng.cam.ac.uk/tutorials/07/ywt.pdf)
 
-**[Bayesian Density Estimation and Inference Using Mixtures](http://www.tandfonline.com/doi/abs/10.1080/01621459.1995.10476550#.UuNZ1PRQ2BQ)
-Michael D. Escobar & Mike West
-Journal of the American Statistical Association, Volume 90, Issue 430, 1995, pp. 577-588.
+**[Escobar MD, West M, *Bayesian Density Estimation and Inference Using Mixtures*.](http://www.tandfonline.com/doi/abs/10.1080/01621459.1995.10476550#.UuNZ1PRQ2BQ)** Journal of the American Statistical Association, Volume 90, Issue 430, 1995, pp. 577-588.
 
