@@ -252,17 +252,7 @@ and $(i\_1,\ldots,i\_k)$ are the indices of the data matrix rows in the same clu
 See [Hannah et al., 2011](http://castlelab.princeton.edu/Papers/Hannah%20Blei%20Powell-DP-GLM_JMLR_Jan2011.pdf) for a generalization of this idea to other GLMs, including an application to classification.
 
 
-### What is next?
 
-Here is an overview of some other active topics (each with a review/representative/recent paper) in the Bayesian non-parametric literature. We may spend more time on one or two of these, depending on the level of interest. Let me know if you think one of these will be particularly useful for your research.
-
-- [Infinite Hidden Markov Models](http://www.cs.berkeley.edu/~jordan/papers/stickyHDPHMM_LIDS_TR.pdf)
-- [Dependent Dirichlet Processes](http://www2.warwick.ac.uk/fac/sci/statistics/staff/academic-research/steel/steel_homepage/techrep/ddp.pdf)
-- [Indian Buffet Process](http://ai.stanford.edu/~tadayuki/papers/miller-phd-dissertation11.pdf)
-- [Normalized Random Measures](http://www.stats.ox.ac.uk/~teh/research/npbayes/FavTeh2013a.pdf)
-- [Gamma-exponential process](http://books.nips.cc/papers/files/nips24/NIPS2011_1162.pdf)
-- [Fragmentation-Coagulation](http://www.stats.ox.ac.uk/~teh/research/npbayes/TehEllBlu2013a.pdf)
-- [Random graphs](http://arxiv.org/abs/1401.1137)
 
 
 ### Readings in preparation for next topics
