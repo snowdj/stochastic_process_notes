@@ -261,7 +261,7 @@ This alternative consists in visiting the sticks in order, and flipping a coin e
 
 <img src="{{ site.url }}/images/auxv-move4.jpg" alt="Drawing" style="width: 400px;"/> 
 
-Here the persons represent datapoints, and the left-hand-side represents a decision tree.  Since the $\beta\_c \sim \betarv(1, \alpha\_0)$, and that each decision in the decision tree is multinomial, we get by multinomial-dirichlet conjugacy:
+Here the persons represent datapoints, and the right-hand-side represents a decision tree.  Since the $\beta\_c \sim \betarv(1, \alpha\_0)$, and that each decision in the decision tree is multinomial, we get by multinomial-dirichlet conjugacy:
     \begin{eqnarray}
     \P(\ud \pi\_c| \text{ rest except for } u) = \betarv(\ud \pi\_i; a\_c, b\_c)
     \end{eqnarray}
