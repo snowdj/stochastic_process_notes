@@ -73,8 +73,8 @@ This gives an interpretation of $\alpha\_0$ as a precision parameter for the Dir
 
 **Statistical tasks considered:** 
 
-- **Density estimation:** The task in density estimation is to give an estimate, based on observed data, of an unobservable underlying probability density function. The unobservable density function is thought of as the density according to which a large population is distributed; the data are usually thought of as a random sample from that population.  
-- **Clustering:** In cases where the population is thought as being the union of sub-populations, the task of cluster analysis is to find the sub-population structure (usually without labeled data).  Let us assume for simplicity that we wish to separate the data into two clusters. <sub>Note that the Dirichlet process is still a useful tool, even when the number of desired cluster is fixed.  This is because each cluster that is output may need internally more than one mixture to be explained adequately under the likelihood model at hand. Note also that the DPM is not necessarily the right tool for finding a point estimate on the number of cluster components, in contrast to popular belief: see [Miller and Harrison, 2013](http://media.nips.cc/nipsbooks/nipspapers/paper_files/nips26/173.pdf) for a simple cautionary example of inconsistency of the DPM for identifying the number of components.</sub>
+- **[Density estimation](http://www.foxgo.net/uploads/2/1/3/8/2138775/foxgodensityestimation_for_statistics_and_data.pdf):** The task in density estimation is to give an estimate, based on observed data, of an unobservable underlying probability density function. The unobservable density function is thought of as the density according to which a large population is distributed; the data are usually thought of as a random sample from that population.  
+- **[Clustering](http://www.norusis.com/pdf/SPC_v13.pdf):** In cases where the population is thought as being the union of sub-populations, the task of cluster analysis is to find the sub-population structure (usually without labeled data).  Let us assume for simplicity that we wish to separate the data into two clusters. <sub>Note that the Dirichlet process is still a useful tool, even when the number of desired cluster is fixed.  This is because each cluster that is output may need internally more than one mixture to be explained adequately under the likelihood model at hand. Note also that the DPM is not necessarily the right tool for finding a point estimate on the number of cluster components, in contrast to popular belief: see [Miller and Harrison, 2013](http://media.nips.cc/nipsbooks/nipspapers/paper_files/nips26/173.pdf) for a simple cautionary example of inconsistency of the DPM for identifying the number of components.</sub>
 
 **Bayesian approach:** Let us take a Bayesian approach to these problems.  This means that we need to pick:
 
@@ -119,7 +119,7 @@ We will now see with the current example how this abstract quantity can be compu
 First, for the rand loss, we can write:
 \\begin{eqnarray}
 \argmin\_{\textrm{partition }\rho} \E\left[\randindex(X, \rho)|Y\right] & = &
-\argmin\_{\textrm{partition }\rho} \sum\_{i<j} \E \left[\1 \left[\1[X\_i = X\_j]\right] \neq \rho\_{ij}|Y\right] \\\\
+\argmin\_{\textrm{partition }\rho} \sum\_{i<j} \E \left[\1 \left[\1[X\_i = X\_j] \neq \rho\_{ij}\right]f|Y\right] \\\\
 &=&\argmin\_{\textrm{partition }\rho} \sum\_{i<j} \left\\{(1-\rho\_{ij})\P(X\_i= X\_j|Y) + \rho\_{ij} \left(1- \P(X\_i = X\_j |y)\right)\right\\} \label{eq:loss-id}
 \\end{eqnarray}
 where $\rho\_{i,j} = (i \sim\_{\rho} j)$. 
