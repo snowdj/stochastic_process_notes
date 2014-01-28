@@ -96,6 +96,8 @@ where $(i \sim\_\rho j) = 1$ if there is a $B\in\rho$ s.t. $\\{i,j\\}\subseteq B
 
 In other words, a loss of one is incurred each time either: (1) two points are assumed to be in the same cluster when they should not, or (2) two points are assumed to be in different clusters when they should be in the same cluster.
 
+<img src="{{ site.url }}/images/Randloss.png" alt="Drawing" style="width: 300px;"/> 
+
 ---
 
 The rand loss has several problems, motivating other clustering losses such as the adjusted rand index, but we will look at the rand loss here since the derivation of the Bayes estimator is easy for that particular loss. (See [Fritsch and Ickstadt, 2009](http://ba.stat.cmu.edu/journal/2009/vol04/issue02/fritsch.pdf) for discussion on other losses and how to approach the Bayes estimator optimization problem for these other losses.)
@@ -185,6 +187,8 @@ The Gibbs move simply consists in picking one of the neighbor or outcome $\rho'\
 \begin{eqnarray}\label{eq:naive-way}
 p\_k = \crp(\rho'\_k; \alpha\_0) \prod\_{B\in \rho'\_k} m(y\_B).
 \end{eqnarray}
+
+<img src="{{ site.url }}/images/Amove.png" alt="Drawing" style="width: 300px;"/> 
 
 Some observations:
 
@@ -287,4 +291,6 @@ Note also that for some other prior distributions (for example general stick-bre
 
 ### Supplementary references and notes
 
-**Under construction**
+[Porteous, I., Ihler, A. T., Smyth, P., & Welling, M. (2012). Gibbs sampling for (coupled) infinite mixture models in the stick breaking representation. arXiv preprint arXiv:1206.6845.](http://arxiv.org/pdf/1206.6845.pdf)
+[Kalli, M., Griffin, J. E., & Walker, S. G. (2011). Slice sampling mixture models. Statistics and computing, 21(1), 93-105.](http://kar.kent.ac.uk/24721/1/slice_mix.pdf)
+
