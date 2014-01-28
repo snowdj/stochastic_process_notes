@@ -277,9 +277,9 @@ We conclude this section by summarizing the advantages and disadvantages of each
 
 <img src="{{ site.url }}/images/pros-cons.jpg" alt="Drawing" style="width: 300px;"/> 
 
-The restriction on the loss is that the expected loss needs to be computable from only samples from the cluster indicators.  The restriction on the likelihood is the conjugacy assumption discussed in the section on collapsed sampler.  Note that Rao-Blackwellization does not necessarily means that the collapsed sampler will be more efficiently, since each sampler resamples different blocks of variables with a different computation cost per sample.  
+The restriction on the loss is that the expected loss needs to be computable from only samples from the cluster indicators.  The restriction on the likelihood is the conjugacy assumption discussed in the section on the collapsed sampler.  Note that Rao-Blackwellization does not necessarily mean that the collapsed sampler will be more efficient, since each sampler resamples different blocks of variables with a different computation cost per sample.  
 
-The memory needs of the slice sampler can get large the case where the value of  the auxiliary variables is low.  Note that using a non-uniform distribution on the auxiliary variables could potentially be used to alleviate this problem.  
+The memory needs of the slice sampler can get large in the case where the value of the auxiliary variables is low.  Note that using a non-uniform distribution on the auxiliary variables could potentially alleviate this problem.  
 
 Note also that for some other prior distributions (for example general stick-breaking distributions, which are covered in the next set of notes), only the slice sampler may be applicable.  In other extensions of the DP, both slice and collapsed samplers are available.
 
