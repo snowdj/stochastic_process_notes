@@ -37,4 +37,5 @@ NOTE: don't forget to use your tutorial making tool!!
 - Peskun speedup
 - Distributed stick breaking implementation
 - Global stick moves (change the order of the cluster indicators) [nb: can be done using SMC]
-
+- Matrix: profiling, Cholesky, in place, JBLA
+- other likelihoods
