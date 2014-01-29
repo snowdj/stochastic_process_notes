@@ -73,8 +73,8 @@ This gives an interpretation of $\alpha\_0$ as a precision parameter for the Dir
 
 **Statistical tasks considered:** 
 
-- **Density estimation:** The task in density estimation is to give an estimate, based on observed data, of an unobservable underlying probability density function. The unobservable density function is thought of as the density according to which a large population is distributed; the data are usually thought of as a random sample from that population.  
-- **Clustering:** In cases where the population is thought as being the union of sub-populations, the task of cluster analysis is to find the sub-population structure (usually without labeled data).  Let us assume for simplicity that we wish to separate the data into two clusters. <sub>Note that the Dirichlet process is still a useful tool, even when the number of desired cluster is fixed.  This is because each cluster that is output may need internally more than one mixture to be explained adequately under the likelihood model at hand. Note also that the DPM is not necessarily the right tool for finding a point estimate on the number of cluster components, in contrast to popular belief: see [Miller and Harrison, 2013](http://media.nips.cc/nipsbooks/nipspapers/paper_files/nips26/173.pdf) for a simple cautionary example of inconsistency of the DPM for identifying the number of components.</sub>
+- **[Density estimation](http://www.foxgo.net/uploads/2/1/3/8/2138775/foxgodensityestimation_for_statistics_and_data.pdf):** The task in density estimation is to give an estimate, based on observed data, of an unobservable underlying probability density function. The unobservable density function is thought of as the density according to which a large population is distributed; the data are usually thought of as a random sample from that population.  
+- **[Clustering](http://www.norusis.com/pdf/SPC_v13.pdf):** In cases where the population is thought as being the union of sub-populations, the task of cluster analysis is to find the sub-population structure (usually without labeled data).  Let us assume for simplicity that we wish to separate the data into two clusters. <sub>Note that the Dirichlet process is still a useful tool, even when the number of desired cluster is fixed.  This is because each cluster that is output may need internally more than one mixture to be explained adequately under the likelihood model at hand. Note also that the DPM is not necessarily the right tool for finding a point estimate on the number of cluster components, in contrast to popular belief: see [Miller and Harrison, 2013](http://media.nips.cc/nipsbooks/nipspapers/paper_files/nips26/173.pdf) for a simple cautionary example of inconsistency of the DPM for identifying the number of components.</sub>
 
 **Bayesian approach:** Let us take a Bayesian approach to these problems.  This means that we need to pick:
 
@@ -95,6 +95,8 @@ The rand loss is defined as the number of (unordered) pairs of data points indic
 where $(i \sim\_\rho j) = 1$ if there is a $B\in\rho$ s.t. $\\{i,j\\}\subseteq B$, and $(i \sim\_\rho j) = 0$ otherwise.
 
 In other words, a loss of one is incurred each time either: (1) two points are assumed to be in the same cluster when they should not, or (2) two points are assumed to be in different clusters when they should be in the same cluster.
+
+<img src="{{ site.url }}/images/Randloss.png" alt="Drawing" style="width: 300px;"/> 
 
 ---
 
@@ -119,7 +121,7 @@ We will now see with the current example how this abstract quantity can be compu
 First, for the rand loss, we can write:
 \\begin{eqnarray}
 \argmin\_{\textrm{partition }\rho} \E\left[\randindex(X, \rho)|Y\right] & = &
-\argmin\_{\textrm{partition }\rho} \sum\_{i<j} \E \left[\1 \left[\1[X\_i = X\_j]\right] \neq \rho\_{ij}|Y\right] \\\\
+\argmin\_{\textrm{partition }\rho} \sum\_{i<j} \E \left[\1 \left[\1[X\_i = X\_j] \neq \rho\_{ij}\right]f|Y\right] \\\\
 &=&\argmin\_{\textrm{partition }\rho} \sum\_{i<j} \left\\{(1-\rho\_{ij})\P(X\_i= X\_j|Y) + \rho\_{ij} \left(1- \P(X\_i = X\_j |y)\right)\right\\} \label{eq:loss-id}
 \\end{eqnarray}
 where $\rho\_{i,j} = (i \sim\_{\rho} j)$. 
@@ -185,6 +187,8 @@ The Gibbs move simply consists in picking one of the neighbor or outcome $\rho'\
 \begin{eqnarray}\label{eq:naive-way}
 p\_k = \crp(\rho'\_k; \alpha\_0) \prod\_{B\in \rho'\_k} m(y\_B).
 \end{eqnarray}
+
+<img src="{{ site.url }}/images/Amove.png" alt="Drawing" style="width: 300px;"/> 
 
 Some observations:
 
@@ -261,7 +265,7 @@ This alternative consists in visiting the sticks in order, and flipping a coin e
 
 <img src="{{ site.url }}/images/auxv-move4.jpg" alt="Drawing" style="width: 400px;"/> 
 
-Here the persons represent datapoints, and the left-hand-side represents a decision tree.  Since the $\beta\_c \sim \betarv(1, \alpha\_0)$, and that each decision in the decision tree is multinomial, we get by multinomial-dirichlet conjugacy:
+Here the persons represent datapoints, and the right-hand-side represents a decision tree.  Since the $\beta\_c \sim \betarv(1, \alpha\_0)$, and that each decision in the decision tree is multinomial, we get by multinomial-dirichlet conjugacy:
     \begin{eqnarray}
     \P(\ud \pi\_c| \text{ rest except for } u) = \betarv(\ud \pi\_i; a\_c, b\_c)
     \end{eqnarray}
@@ -277,9 +281,9 @@ We conclude this section by summarizing the advantages and disadvantages of each
 
 <img src="{{ site.url }}/images/pros-cons.jpg" alt="Drawing" style="width: 300px;"/> 
 
-The restriction on the loss is that the expected loss needs to be computable from only samples from the cluster indicators.  The restriction on the likelihood is the conjugacy assumption discussed in the section on collapsed sampler.  Note that Rao-Blackwellization does not necessarily means that the collapsed sampler will be more efficiently, since each sampler resamples different blocks of variables with a different computation cost per sample.  
+The restriction on the loss is that the expected loss needs to be computable from only samples from the cluster indicators.  The restriction on the likelihood is the conjugacy assumption discussed in the section on the collapsed sampler.  Note that Rao-Blackwellization does not necessarily mean that the collapsed sampler will be more efficient, since each sampler resamples different blocks of variables with a different computation cost per sample.  
 
-The memory needs of the slice sampler can get large the case where the value of  the auxiliary variables is low.  Note that using a non-uniform distribution on the auxiliary variables could potentially be used to alleviate this problem.  
+The memory needs of the slice sampler can get large in the case where the value of the auxiliary variables is low.  Note that using a non-uniform distribution on the auxiliary variables could potentially alleviate this problem.  
 
 Note also that for some other prior distributions (for example general stick-breaking distributions, which are covered in the next set of notes), only the slice sampler may be applicable.  In other extensions of the DP, both slice and collapsed samplers are available.
 
@@ -287,4 +291,6 @@ Note also that for some other prior distributions (for example general stick-bre
 
 ### Supplementary references and notes
 
-**Under construction**
+[Porteous, I., Ihler, A. T., Smyth, P., & Welling, M. (2012). Gibbs sampling for (coupled) infinite mixture models in the stick breaking representation. arXiv preprint arXiv:1206.6845.](http://arxiv.org/pdf/1206.6845.pdf)
+[Kalli, M., Griffin, J. E., & Walker, S. G. (2011). Slice sampling mixture models. Statistics and computing, 21(1), 93-105.](http://kar.kent.ac.uk/24721/1/slice_mix.pdf)
+
