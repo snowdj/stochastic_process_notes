@@ -157,7 +157,7 @@ p(z|x) \propto p(z) \ell(x|z),
 with the following normalization for the right-hand side:
 
 \\begin{eqnarray}\label{eq:marginal}
-m(z) = \int p(z) \ell(x|z) \ud z.
+m(x) = \int p(z) \ell(x|z) \ud z.
 \\end{eqnarray}
 
 This normalization, denoted by $m(x)$, is called the **marginal likelihood** or **evidence**. If the observations $x$ are discrete, this corresponds to the probability of the observed dataset under the model (given the number of observations). For this reason, the evidence plays an important role in Bayesian model selection.
