@@ -35,7 +35,7 @@ This algorithmic description has the following graphical model representation (f
      
 #### Truncated DPM posterior simulation
      
-While forward simulation is easy, exact posterior simulation is computationally hard, as we will see later in this course. We will therefore need approximate posterior simulation. The good news is that we can to show only one additional operation is required: computing the density of a realization of $\pi, Z, X$. 
+While forward simulation is easy, exact posterior simulation is computationally hard, as we will see later in this course. We will therefore need approximate posterior simulation. The good news is that we can show only one additional operation is required: computing the density of a realization of $\pi, Z, X$. 
 
 Depending on the situation, computing the density of a realization can be easy or hard. It is hard when there is a complicated set of outcomes that lead to the same realization. Fortunately, this is not the case here. 
 
