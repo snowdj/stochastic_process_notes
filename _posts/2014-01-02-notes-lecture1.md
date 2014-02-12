@@ -54,7 +54,6 @@ We always have finite observations, why do we need uncountable spaces?
 
 **Terminology:** Finite Dimensional Distributions (FDD)
 
-<!-- **What is de Finetti theorem?** TODO -->
 
 
 ### More detailed overview via *Forward Simulation*
