@@ -258,7 +258,7 @@ G | \utheta\_1, \dots, \utheta\_n \sim \dirp\left(\alpha\_0 + n, \frac{\alpha\_0
 
 #### Equivalence of stick breaking and process definitions
 
-Refer to section 2.5 of these [notes]([notes](http://www.stat.ubc.ca/~bouchard/courses/stat547-sp2011/notes-part2.pdf) from the first time I taught the course.
+Refer to section 2.5 of these [notes](http://www.stat.ubc.ca/~bouchard/courses/stat547-sp2011/notes-part2.pdf) from the first time I taught the course.
 
 
 
