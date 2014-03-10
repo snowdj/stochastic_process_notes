@@ -96,7 +96,7 @@ where $(i \sim\_\rho j) = 1$ if there is a $B\in\rho$ s.t. $\\{i,j\\}\subseteq B
 
 In other words, a loss of one is incurred each time either: (1) two points are assumed to be in the same cluster when they should not, or (2) two points are assumed to be in different clusters when they should be in the same cluster.
 
-<img src="{{ site.url }}/images/Randloss.png" alt="Drawing" style="width: 300px;"/> 
+<img src="{{ site.url }}/images/Randloss.jpg" alt="Drawing" style="width: 300px;"/> 
 
 ---
 
@@ -121,7 +121,7 @@ We will now see with the current example how this abstract quantity can be compu
 First, for the rand loss, we can write:
 \\begin{eqnarray}
 \argmin\_{\textrm{partition }\rho} \E\left[\randindex(X, \rho)|Y\right] & = &
-\argmin\_{\textrm{partition }\rho} \sum\_{i<j} \E \left[\1 \left[\1[X\_i = X\_j] \neq \rho\_{ij}\right]f|Y\right] \\\\
+\argmin\_{\textrm{partition }\rho} \sum\_{i<j} \E \left[\1 \left[\1[X\_i = X\_j] \neq \rho\_{ij}\right]|Y\right] \\\\
 &=&\argmin\_{\textrm{partition }\rho} \sum\_{i<j} \left\\{(1-\rho\_{ij})\P(X\_i= X\_j|Y) + \rho\_{ij} \left(1- \P(X\_i = X\_j |y)\right)\right\\} \label{eq:loss-id}
 \\end{eqnarray}
 where $\rho\_{i,j} = (i \sim\_{\rho} j)$. 
@@ -188,7 +188,7 @@ The Gibbs move simply consists in picking one of the neighbor or outcome $\rho'\
 p\_k = \crp(\rho'\_k; \alpha\_0) \prod\_{B\in \rho'\_k} m(y\_B).
 \end{eqnarray}
 
-<img src="{{ site.url }}/images/Amove.png" alt="Drawing" style="width: 300px;"/> 
+<img src="{{ site.url }}/images/Amove.jpg" alt="Drawing" style="width: 300px;"/> 
 
 Some observations:
 
