@@ -1,5 +1,5 @@
 name: Modelling with Stochastic Processes
 markdown: redcarpet
 pygments: true
-url: http://www.stat.ubc.ca/~bouchard/courses/stat547-sp2013-14
-baseurl: /
+url: http://snowdj.github.io/stochastic_process_notes
+baseurl: http://snowdj.github.io/stochastic_process_notes/
